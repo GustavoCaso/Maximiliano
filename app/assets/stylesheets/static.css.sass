@@ -5,11 +5,19 @@
 @import "utilities"
 
 #content
-  height: 550px
+  height: inherit
+  position: relative
   background: white url('dog.png') no-repeat center center
-
   #info
-    padding-top: 200px
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    width: 1000px
+    height: 105px
+    margin: auto
+    
     p
       color: $font_color
       text-align: center
