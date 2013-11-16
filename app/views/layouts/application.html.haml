@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title Maximiliano
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    #header
+      #logo
+        = link_to (image_tag "logo.png", alt: "MaximilianoDeYork"), root_path
+        
+      %nav.main_nav 
+        %ul 
+          %li COLECCION
+          %li URBANO
+          %li ACCESORIOS
+          %li SATRE
+          %li CARRITO  
+    = yield
+
+
+    #footer.clearfix
+      %nav.footer_nav
+        %ul 
+          %li AYUDA 
+          %li NOSOTROS
+
+      %span 
+        INFO@MAXIMILIANODEYORK.COM
