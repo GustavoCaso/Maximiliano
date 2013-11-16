@@ -2,29 +2,31 @@
 %html
   %head
     %title Maximiliano
-    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag('http://fonts.googleapis.com/css?family=Raleway:400,600,700')
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    #header
-      #logo
-        = link_to (image_tag "logo.png", alt: "MaximilianoDeYork"), root_path
-        
-      %nav.main_nav 
-        %ul 
-          %li COLECCION
-          %li URBANO
-          %li ACCESORIOS
-          %li SATRE
-          %li CARRITO  
-    = yield
+    #container
+      #header
+        #logo
+          = link_to (image_tag "logo.png", alt: "MaximilianoDeYork"), root_path
+          
+        %nav.main_nav 
+          %ul 
+            %li COLECCION
+            %li URBANO
+            %li ACCESORIOS
+            %li SASTRE
+            %li CARRITO  
+      = yield
 
 
-    #footer.clearfix
-      %nav.footer_nav
-        %ul 
-          %li AYUDA 
-          %li NOSOTROS
+      #footer
+        %nav.footer_nav
+          %ul 
+            %li AYUDA 
+            %li NOSOTROS
 
-      %span 
-        = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"
+        %span 
+          = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"

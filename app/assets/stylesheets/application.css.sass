@@ -8,53 +8,63 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ 
+
  *= require twitter/bootstrap
  *= require_self
  *= require_tree .
+ *= require reset
  */
 
 @import "utilities"
 
 body
-  margin: 0
-  padding: 0
-  width: 1000px
-  margin: 0 auto 
-#header
-  background: $header_color
-  height: 100px
-  #logo
-    padding: 10px 70px 0 10px
-    float: left
-  nav.main_nav
-    height: 100px
-    line-height: 100px
-    ul 
-      list-style-type: none
-      li
-        font-size: 18px
-        color: $font_color
-        float: left
-        margin-right: 80px
+  font-family: 'Raleway', sans-serif
 
-#footer
-  width: 1000px
-  height: 40px
-  background: $header_color
-  color: $font_color
-  nav.footer_nav
-    ul
-      width: 200px
-      list-style-type: none
-      li
+  #container
+    width: 100%
+    background: $header_color
+    #header
+      background: $header_color
+      height: 100px
+      width: 1000px
+      margin: 0 auto
+      #logo
+        padding: 10px 60px 0 10px
         float: left
-        margin-right: 8px
-      li:first-child:after
-        content: "|" 
-        margin-left: 5px 
-  span
-    float: right  
-    margin-right: 10px             
-    
-    a
+      nav.main_nav
+        height: 100px
+        line-height: 100px
+        ul 
+          list-style-type: none
+          li
+            font-size: 18px
+            letter-spacing: 1.5px
+            color: $font_color
+            float: left
+            margin-right: 70px
+            font-weight: 600
+
+    #footer
+      width: 1000px
+      margin: 0 auto
+      height: 40px
+      background: $header_color
       color: $font_color
+      line-height: 40px
+      nav.footer_nav
+        ul
+          width: 200px
+          list-style-type: none
+          li
+            float: left
+            margin-right: 8px
+          li:first-child:after
+            content: "|" 
+            margin-left: 5px 
+      span
+        float: right  
+        margin-right: 10px             
+        
+        a
+          color: $font_color
