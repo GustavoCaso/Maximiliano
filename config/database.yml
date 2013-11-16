@@ -14,5 +14,10 @@ development:
 test:
   adapter: postgresql
   database: maximiliano-test
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: maximiliano-pro  
   
   
