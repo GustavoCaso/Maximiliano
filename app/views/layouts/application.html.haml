@@ -13,37 +13,47 @@
           .col-lg-2.col-sm-12
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
-          
-          .col-lg-10.hidden-sm
-            %nav.main_nav
-              %ul 
-                %li COLECCION
-                %li URBANO
-                %li ACCESORIOS
-                %li SASTRE
-                %li CARRITO  
-          .col-sm-12.visible-sm
-            .panel-group#accordion.pull-right
-              %a.small-menu{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} SMALL MENU 
 
-              #collapseOne.panel-collapse.collapse
-                %ul 
-                  %li COLECCION
-                  %li URBANO
-                  %li ACCESORIOS
-                  %li SASTRE
-                  %li CARRITO  
+          .col-lg-10.hidden-sm.hidden-xs
+            %nav.main_nav
+              %ul
+                %li
+                  = link_to "COLECCIÓN", "#"
+                %li
+                  = link_to "URBANO", "#"
+                %li
+                  = link_to "ACCESORIOS", "#"
+                %li
+                  = link_to "SASTRE", tailor_path
+                %li
+                  = link_to "CARRITO", "#"
+          .col-sm-12.visible-sm.visible-xs
+            .panel-group#accordion
+              %a.pull-right{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} small
+
+              #collapseOne.panel-collapse.collapse.small-menu
+                %ul
+                  %li
+                    = link_to "COLECCIÓN", "#"
+                  %li
+                    = link_to "URBANO", "#"
+                  %li
+                    = link_to "ACCESORIOS", "#"
+                  %li
+                    = link_to "SASTRE", tailor_path
+                  %li
+                    = link_to "CARRITO", "#"
       = yield
 
-      .row  
+      .row
         .nav.nav-bar-default.navbar-fixed-bottom.footer
           .container
             .row
               .col-lg-5
                 %nav.footer_nav.navbar-text
-                  %ul 
+                  %ul
                     %li= link_to "AYUDA", help_path
                     %li= link_to  "NOSOTROS", us_path
-              .col-lg-4.col-lg-offset-3
+              .col-lg-4.col-lg-offset-3.col-md-3.col-md-offset-4.col-sm-3.col-sm-offset-4
                 %span.navbar-text
                   = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"

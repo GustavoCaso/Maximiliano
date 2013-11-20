@@ -4,6 +4,9 @@ Maximiliano::Application.routes.draw do
   root 'static#home'
   get "help", to: "static#help", as: "help"
   get "us", to: "static#us", as: "us"
+  get "tailor", to: "static#tailor", as: "tailor"
+
+  get "admin", to: "admin#index", as: "admin"
 
 
 
@@ -47,7 +50,7 @@ Maximiliano::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

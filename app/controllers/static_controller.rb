@@ -6,6 +6,9 @@ class StaticController < ApplicationController
   end
 
   def us
-    
+
+  end
+
+  def tailor
   end
 end

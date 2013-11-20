@@ -1,48 +1,46 @@
 #content_help
   .container.help_content
     .row
-      .col-lg-5.hidden-xs
-        = image_tag ('dog.png'), class: "img-responsive"
-
-      .col-lg-7
-        %table.table-hover
-          %thead 
-            %tr 
+      .col-lg-7.col-md-8.col-lg-push-5.col-md-push-4
+        %table
+          %thead
+            %tr
               %th TALLA
               %th PESO
               %th LARGO
               %th CONTORNO
-          %tbody 
-            %tr 
+          %tbody
+            %tr
               %td
                 = image_tag('xs_size.png', class: "img-responsive")
               %td 500gr - 1kg
               %td 21cm
               %td 25cm
 
-            %tr 
+            %tr
               %td= image_tag('s_size.png', class: "img-responsive")
               %td 1kg - 1.5kg
               %td 25cm
               %td 30cm
 
-            %tr 
+            %tr
               %td= image_tag('m_size.png', class: "img-responsive")
               %td 1,5kg - 3kg
               %td 31cm
               %td 34cm
-              
-            %tr 
+
+            %tr
               %td= image_tag('g_size.png', class: "img-responsive")
               %td 3kg - 4kg
               %td 35cm
-              %td 38cm      
+              %td 38cm
 
-            %tr 
+            %tr
               %td= image_tag('xg_size.png', class: "img-responsive")
               %td 4kg - 6kg
               %td 40cm
-              %td 48cm        
-                   
+              %td 48cm
 
-      
+      .col-lg-5.col-lg-pull-7.col-md-4.col-md-pull-8
+        = image_tag ('dog.png'), class: "img-responsive"
+
