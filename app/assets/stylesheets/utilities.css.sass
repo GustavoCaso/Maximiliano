@@ -1,21 +1,23 @@
-
 /*COLOR VARIABLES*/ 
 $header_color: rgba(227,211,190,1)
 $font_color: rgba(63,33,13,1)
 
-/*UTILITIES*/
-.clearfix
-  &:after
-    content: "."
-    display: block
-    clear: both
-    visibility: hidden
-    line-height: 0
-    height: 0
-  display: inline-block
 
-html[xmlns] .clearfix
-  display: block
+/*LINK FORMAT*/
+a
+  color: $font_color
+  
+  &:hover
+    text-decoration: none
+    border-bottom: 2px solid $font_color
+    padding-bottom: 0.031em
+    color: darken($font-color, 30%)
+  &:active
+    border-bottom: 2px solid $font_color
 
-* html .clearfix
-  height: 1%
+/*TYPOGRAPHY*/
+
+h1,h2,h3,h4,h5,h6,p
+  color: $font_color    
+
+

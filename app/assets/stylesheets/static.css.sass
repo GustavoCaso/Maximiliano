@@ -4,20 +4,13 @@
 
 @import "utilities"
 
+
 #content
   height: 90%
-  position: relative
   background: white url('dog.png') no-repeat center center
+  position: relative
   #info
-    position: absolute
-    top: 0
-    right: 0
-    left: 0
-    bottom: 0
-    width: 1000px
-    height: 105px
-    margin: auto
-    
+    margin-top: 30%
     p
       color: $font_color
       text-align: center
@@ -29,4 +22,38 @@
       a
         color: $font_color  
         font-weight: bold
-    
+
+#content_help
+  background: white  
+  height: 90%
+  .help_content
+    padding-top: 9%
+
+    table
+      font-family: 'Raleway', sans-serif
+      th
+        font-weight: bold
+        font-size: 1.357em  //19px/14px
+
+      th, td
+        padding-right: 70px
+        text-align: center
+        color: $font_color
+      td
+        font-size: 1.214em  //17px/14px
+        font-weight: 600
+
+#content_us
+  background: white
+  height: 90%
+  .us_content
+    padding-top: 9%  
+
+    .text_us
+      margin-top: -3.571em // 50px/14px
+
+    p
+      font-size: 15px
+      text-indent: justify
+        
+      

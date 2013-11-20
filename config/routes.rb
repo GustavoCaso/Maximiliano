@@ -2,6 +2,8 @@ Maximiliano::Application.routes.draw do
 
   get "static/home"
   root 'static#home'
+  get "help", to: "static#help", as: "help"
+  get "us", to: "static#us", as: "us"
 
 
 

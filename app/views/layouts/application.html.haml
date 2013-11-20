@@ -8,25 +8,31 @@
     = csrf_meta_tags
   %body
     #container
-      #header
-        #logo
-          = link_to (image_tag "logo.png", alt: "MaximilianoDeYork"), root_path
+      .row
+        .container
+          .col-lg-2
+            #logo
+              = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
           
-        %nav.main_nav 
-          %ul 
-            %li COLECCION
-            %li URBANO
-            %li ACCESORIOS
-            %li SASTRE
-            %li CARRITO  
+          .col-lg-10 
+            %nav.main_nav
+              %ul 
+                %li COLECCION
+                %li URBANO
+                %li ACCESORIOS
+                %li SASTRE
+                %li CARRITO  
       = yield
 
-
-      #footer.clearfix
-        %nav.footer_nav
-          %ul 
-            %li AYUDA 
-            %li NOSOTROS
-
-          %span 
-            = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"
+      .row  
+        .nav.nav-bar-default.navbar-fixed-bottom.footer
+          .container
+            .row
+              .col-lg-5
+                %nav.footer_nav.navbar-text
+                  %ul 
+                    %li= link_to "AYUDA", help_path
+                    %li= link_to  "NOSOTROS", us_path
+              .col-lg-4.col-lg-offset-3
+                %span.navbar-text
+                  = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"
