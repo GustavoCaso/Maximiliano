@@ -10,11 +10,11 @@
     #container
       .row
         .container
-          .col-lg-2
+          .col-lg-2.col-sm-12
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
           
-          .col-lg-10 
+          .col-lg-10.hidden-sm
             %nav.main_nav
               %ul 
                 %li COLECCION
@@ -22,6 +22,17 @@
                 %li ACCESORIOS
                 %li SASTRE
                 %li CARRITO  
+          .col-sm-12.visible-sm
+            .panel-group#accordion.pull-right
+              %a.small-menu{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} SMALL MENU 
+
+              #collapseOne.panel-collapse.collapse
+                %ul 
+                  %li COLECCION
+                  %li URBANO
+                  %li ACCESORIOS
+                  %li SASTRE
+                  %li CARRITO  
       = yield
 
       .row  
