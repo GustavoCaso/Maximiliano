@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Description:
+  = @product.description
+%p
+  %b Category:
+  = @product.category
+%p
+  %b Model:
+  = @product.model
+
+%p
+  %b Picture:
+  = image_tag @product.picture.url(:medium)
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

@@ -18,29 +18,82 @@
 
 
 body, html
-  font-family: 'Raleway', sans-serif
-  height: 100%
   #container
     height: 100%
     .color_header
       background: $header_color
+      padding: 10px 0
+
     #logo
-      margin: 10px 60px 0 10px
+      margin: 0 60px 0 10px
       .no-border
         &:hover
           border: none
-    nav.main_nav
-      height: 100px
-      line-height: 100px
-      ul
-        list-style-type: none
-        li
-          font-size: 18px
-          letter-spacing: 1.5px
+    // nav.main_nav
+    //   height: 100px
+    //   line-height: 100px
+    //   ul
+    //     list-style-type: none
+    //     position: relative
+    //     li
+    //       font-size: 18px
+    //       letter-spacing: 1.5px
+    //       color: $font_color
+    //       float: left
+    //       margin-right: 70px
+    //       font-weight: 600
+
+    //       a
+
+
+
+    //       &:hover > ul.submenu
+    //         display: block
+    //         visibility: visible
+
+    //       ul.submenu
+    //         display: none
+    //         position: absolute
+    //       .coleccion, .urbano, .accesorios
+    //         top: 0
+    //         margin-top: 31px
+    //         li
+    //           font-size: 13px
+
+    .dropdown-menu
+      position: absolute
+      margin-top: 20px
+      li
+        float: left
+        padding-right: 40px
+        a
           color: $font_color
-          float: left
-          margin-right: 70px
-          font-weight: 600
+          font-size: 24px
+
+          &:hover
+            background: none
+      .dropdown-submenu > .dropdown-menu
+        top: 40px
+
+        li
+          a
+            font-size: 14px
+      .coleccion
+        left: 15px
+
+      .urbano
+        left: 210px
+
+      .accesorios
+        left: 370px
+
+
+      .dropdown-submenu:hover > .dropdown-menu
+        display: block
+
+
+
+
 
     .small-menu
       ul

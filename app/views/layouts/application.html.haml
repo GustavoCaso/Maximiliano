@@ -10,23 +10,80 @@
     #container
       .row.color_header
         .container
+          - if flash
+           - flash.each do |value,key|
+            %p{class: "#{key}"}
+              = value
           .col-lg-2.col-sm-12
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
 
           .col-lg-10.col-md-12.hidden-sm.hidden-xs
-            %nav.main_nav
-              %ul
-                %li
-                  = link_to "COLECCIÓN", "#"
-                %li
-                  = link_to "URBANO", "#"
-                %li
-                  = link_to "ACCESORIOS", "#"
-                %li
-                  = link_to "SASTRE", tailor_path
-                %li
-                  = link_to "CARRITO", "#"
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static; margin-bottom: 5px; *width: 180px;"}
+              %li.dropdown-submenu
+                %a{href: "#"} COLECCION
+                %ul.dropdown-menu.coleccion
+                  %li
+                    %a{href: "#"} CHANNEL
+                  %li
+                    %a{href: "#"} PIEL
+                  %li
+                    %a{href: "#"} TRAJES
+                  %li
+                    %a{href: "#"} ABRIGOS
+              %li.dropdown-submenu
+                %a{href: "#"} URBANO
+                %ul.dropdown-menu.urbano
+                  %li
+                    %a{href: "#"} PUNTO CLASICO
+                  %li
+                    %a{href: "#"} PUNTO DECO
+                  %li
+                    %a{href: "#"} BÁSICOS
+                  %li
+                    %a{href: "#"} IMPERMEABLES
+              %li.dropdown-submenu
+                %a{href: "#"} ACCESORIOS
+                %ul.dropdown-menu.accesorios
+                  %li
+                    %a{href: "#"} MANTAS
+                  %li
+                    %a{href: "#"} COJINES
+                  %li
+                    %a{href: "#"} COLLARES
+                  %li
+                    %a{href: "#"} CORREAS
+              %li
+                = link_to "SASTRE", tailor_path
+              %li
+                = link_to "CARRITO", "#"
+            -# %nav.main_nav
+            -#   %ul
+            -#     %li
+            -#       = link_to "COLECCIÓN", "#"
+            -#       %ul.submenu.coleccion
+            -#         %li= link_to "CHANNEL", '#'
+            -#         %li PIEL
+            -#         %li TRAJES
+            -#         %li ABRIGOS
+            -#     %li
+            -#       = link_to "URBANO", "#"
+            -#       %ul.submenu.urbano
+            -#         %li PUNTO CLASICO
+            -#         %li PUNTO DECO
+            -#         %li BÁSICOS
+            -#         %li IMPERMEABLES
+            -#     %li
+            -#       = link_to "ACCESORIOS", "#"
+            -#       %ul.submenu.accesorios
+            -#         %li MANTAS
+            -#         %li COJINES
+            -#         %li COLLARES
+            -#         %li CORREAS
+            -#     %li
+            -#       = link_to "SASTRE", tailor_path
+            -#     %li
+            -#       = link_to "CARRITO", "#"
           .col-sm-12.visible-sm.visible-xs
             .panel-group#accordion
               %a.pull-right{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} small

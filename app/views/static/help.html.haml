@@ -1,7 +1,7 @@
 #content_help
   .container.help_content
     .row
-      .col-lg-7.col-md-8.col-lg-push-5.col-md-push-4
+      .col-lg-push-5.col-md-push-5.col-lg-7.col-md-8.hidden-sm.hidden-xs
         %table
           %thead
             %tr
@@ -16,31 +16,62 @@
               %td 500gr - 1kg
               %td 21cm
               %td 25cm
-
             %tr
               %td= image_tag('s_size.png', class: "img-responsive")
               %td 1kg - 1.5kg
               %td 25cm
               %td 30cm
-
             %tr
               %td= image_tag('m_size.png', class: "img-responsive")
               %td 1,5kg - 3kg
               %td 31cm
               %td 34cm
-
             %tr
               %td= image_tag('g_size.png', class: "img-responsive")
               %td 3kg - 4kg
               %td 35cm
               %td 38cm
-
+            %tr
+              %td= image_tag('xg_size.png', class: "img-responsive")
+              %td 4kg - 6kg
+              %td 40cm
+              %td 48cm
+      .col-lg-pull-7.col-md-pull-8.col-lg-5.col-md-4.hidden-sm.hidden-xs
+        = image_tag ('dog.png'), class: "img-responsive"
+      .col-sm-12.col-xs-12.visible-sm.visible-xs
+        %table.table_with_background_of_dog
+          %thead
+            %tr
+              %th TALLA
+              %th PESO
+              %th LARGO
+              %th CONTORNO
+          %tbody
+            %tr
+              %td
+                = image_tag('xs_size.png', class: "img-responsive")
+              %td 500gr - 1kg
+              %td 21cm
+              %td 25cm
+            %tr
+              %td= image_tag('s_size.png', class: "img-responsive")
+              %td 1kg - 1.5kg
+              %td 25cm
+              %td 30cm
+            %tr
+              %td= image_tag('m_size.png', class: "img-responsive")
+              %td 1,5kg - 3kg
+              %td 31cm
+              %td 34cm
+            %tr
+              %td= image_tag('g_size.png', class: "img-responsive")
+              %td 3kg - 4kg
+              %td 35cm
+              %td 38cm
             %tr
               %td= image_tag('xg_size.png', class: "img-responsive")
               %td 4kg - 6kg
               %td 40cm
               %td 48cm
 
-      .col-lg-5.col-lg-pull-7.col-md-4.col-md-pull-8
-        = image_tag ('dog.png'), class: "img-responsive"
 

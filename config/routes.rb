@@ -1,5 +1,8 @@
 Maximiliano::Application.routes.draw do
 
+  devise_for :users
+  resources :products
+
   get "static/home"
   root 'static#home'
   get "help", to: "static#help", as: "help"
@@ -8,7 +11,9 @@ Maximiliano::Application.routes.draw do
 
   get "admin", to: "admin#index", as: "admin"
 
-
+  namespace :admin do
+    resources :products
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
