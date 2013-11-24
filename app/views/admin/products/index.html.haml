@@ -7,6 +7,12 @@
     %th Category
     %th Sub Category
     %th Picture
+    %th XS
+    %th S
+    %th M
+    %th G
+    %th XG
+
     %th
     %th
     %th
@@ -18,6 +24,11 @@
       %td= product.category
       %td= product.sub_category
       %td= image_tag product.picture.url(:thumb)
+      %td
+      %td
+      %td
+      %td
+      %td
       %td= link_to 'Show', admin_product_path(product)
       %td= link_to 'Edit', edit_admin_product_path(product)
       %td= link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -1,0 +1,23 @@
+%h1 Listing sizes
+
+%table
+  %tr
+    %th Product
+    %th Size
+    %th Price
+    %th
+    %th
+    %th
+
+  - @sizes.each do |size|
+    %tr
+      %td= size.product_id
+      %td= size.size
+      %td= size.price
+      %td= link_to 'Show', size
+      %td= link_to 'Edit', edit_size_path(size)
+      %td= link_to 'Destroy', size, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Size', new_size_path

@@ -1,6 +1,8 @@
 Maximiliano::Application.routes.draw do
 
 
+  resources :sizes
+
   resources :products, only:[:show]
 
   get "static/home"

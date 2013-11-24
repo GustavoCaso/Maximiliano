@@ -1,5 +1,7 @@
 class Product < ActiveRecord::Base
-  has_attached_file :picture, :styles => { :medium => "300x300!", :thumb => "100x100" }
+  has_many :sizes
+  accepts_nested_attributes_for :sizes, allow_destroy: true
+  has_attached_file :picture, :styles => { :medium => "300x300!", :thumb => "100x100!" }
 
 
   CATEGORY = ["COLECCION", "URBANO", "ACCESORIOS"]

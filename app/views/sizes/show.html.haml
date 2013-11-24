@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product:
+  = @size.product_id
+%p
+  %b Size:
+  = @size.size
+%p
+  %b Price:
+  = @size.price
+
+= link_to 'Edit', edit_size_path(@size)
+\|
+= link_to 'Back', sizes_path

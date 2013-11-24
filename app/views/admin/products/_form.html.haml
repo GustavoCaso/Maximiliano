@@ -18,6 +18,15 @@
   .field
     = f.label :sub_category
     = f.select :sub_category, Product::SUBCATEGORY, prompt: "Select a subcategory"
+
+    = f.fields_for :sizes do |ff|
+      .field
+        = ff.label :size
+        = ff.text_field :size
+      .field
+        = ff.label :price
+        = ff.text_field :price
+
   .field
     = f.label :picture
     = f.file_field :picture
