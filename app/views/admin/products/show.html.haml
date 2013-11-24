@@ -17,4 +17,6 @@
   %b Picture:
   = image_tag @product.picture.url(:medium)
 
-
+= link_to 'Edit', edit_admin_product_path(@product)
+\|
+= link_to 'Back', admin_products_path

@@ -1,0 +1,7 @@
+#collection
+  .container.container_gallery
+    - @collection.in_groups_of(3, false) do |collections|
+      .row.gallery_row
+        - collections.each do |collection|
+          .col-xs-4
+            = link_to (image_tag collection.picture.url(:medium), class:'img-responsive gallery_img', :data => {id: collection.id, type: collection.sub_category.downcase}), product_path(collection)

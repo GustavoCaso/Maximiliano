@@ -11,9 +11,9 @@
       .row.color_header
         .container
           - if flash
-           - flash.each do |value,key|
-            %p{class: "#{key}"}
-              = value
+            - flash.each do |value,key|
+              %p{class: "#{key}"}
+                = value
           .col-lg-2.col-sm-12
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
@@ -21,38 +21,38 @@
           .col-lg-10.col-md-12.hidden-sm.hidden-xs
             %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static; margin-bottom: 5px; *width: 180px;"}
               %li.dropdown-submenu
-                %a{href: "#"} COLECCION
-                %ul.dropdown-menu.coleccion
+                %a{href: collection_path } COLECCION
+                %ul.dropdown-menu.coleccion{class: ("visible" if @switch == "collection")}
                   %li
-                    %a{href: "#"} CHANNEL
+                    %a{href: "#", class: "channel"} CHANNEL
                   %li
-                    %a{href: "#"} PIEL
+                    %a{href: "#", class: "piel"} PIEL
                   %li
-                    %a{href: "#"} TRAJES
+                    %a{href: "#", class: "trajes"} TRAJES
                   %li
-                    %a{href: "#"} ABRIGOS
+                    %a{href: "#", class: "abrigos"} ABRIGOS
               %li.dropdown-submenu
-                %a{href: "#"} URBANO
-                %ul.dropdown-menu.urbano
+                %a{href: urban_path } URBANO
+                %ul.dropdown-menu.urbano{class: ("visible" if @switch == "urban")}
                   %li
-                    %a{href: "#"} PUNTO CLASICO
+                    %a{href: "#", class: "punto_clasico"} PUNTO CLASICO
                   %li
-                    %a{href: "#"} PUNTO DECO
+                    %a{href: "#", class: "punto_deco"} PUNTO DECO
                   %li
-                    %a{href: "#"} BÁSICOS
+                    %a{href: "#", class: "basico"} BÁSICOS
                   %li
-                    %a{href: "#"} IMPERMEABLES
+                    %a{href: "#", class: "impermeables"} IMPERMEABLES
               %li.dropdown-submenu
-                %a{href: "#"} ACCESORIOS
-                %ul.dropdown-menu.accesorios
+                %a{href: accesories_path } ACCESORIOS
+                %ul.dropdown-menu.accesorios{class: ("visible" if @switch == "accesories")}
                   %li
-                    %a{href: "#"} MANTAS
+                    %a{href: "#", class: "mantas"} MANTAS
                   %li
-                    %a{href: "#"} COJINES
+                    %a{href: "#", class: "cojines"} COJINES
                   %li
-                    %a{href: "#"} COLLARES
+                    %a{href: "#", class: "collares"} COLLARES
                   %li
-                    %a{href: "#"} CORREAS
+                    %a{href: "#", class: "correas"} CORREAS
               %li
                 = link_to "SASTRE", tailor_path
               %li

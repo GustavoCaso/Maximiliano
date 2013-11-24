@@ -1,0 +1,58 @@
+!!!
+%html
+  %head
+    %title Maximiliano
+    = stylesheet_link_tag "admin"
+    = stylesheet_link_tag('http://fonts.googleapis.com/css?family=Raleway:400,600,700')
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+  %body
+    #container
+      .container
+        %nav.navbar.navbar-default.menu-admin{role:"navigation"}
+          .navbar-header
+            = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive navbar-brand"), admin_path
+
+          .collapse.navbar-collapse
+            %ul.nav.navbar-nav.navbar-text.main-admin-menu
+              %li.dropdown
+                = link_to  "#", class: "dropdown-toggle", data:{toggle: "dropdown"} do
+                  COLECCION
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to "CHANNEL", "#"
+                  %li
+                    = link_to "PIEL", "#"
+                  %li
+                    = link_to "TRAJES", "#"
+                  %li
+                    = link_to "ABRIGOS", "#"
+              %li.dropdown
+                = link_to  "#", class: "dropdown-toggle", data:{toggle: "dropdown"} do
+                  URBANO
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to "Punto CLASICO", "#"
+                  %li
+                    = link_to "PUNTO DECO", "#"
+                  %li
+                    = link_to "BÁSICOS", "#"
+                  %li
+                    = link_to "IMPERMEABLES", "#"
+              %li.dropdown
+                = link_to  "#", class: "dropdown-toggle", data:{toggle: "dropdown"} do
+                  ACCESORIOS
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to "MANTAS", "#"
+                  %li
+                    = link_to "COJINES", "#"
+                  %li
+                    = link_to "COLLARES", "#"
+                  %li
+                    = link_to "CORREAS", "#"
+
+        = yield

@@ -1,0 +1,27 @@
+%h1 Listing products
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th Category
+    %th Sub Category
+    %th Picture
+    %th
+    %th
+    %th
+
+  - @products.each do |product|
+    %tr
+      %td= product.name
+      %td= product.description
+      %td= product.category
+      %td= product.sub_category
+      %td= image_tag product.picture.url(:thumb)
+      %td= link_to 'Show', admin_product_path(product)
+      %td= link_to 'Edit', edit_admin_product_path(product)
+      %td= link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Product', new_admin_product_path

@@ -14,6 +14,31 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap/bootstrap
+//= require quicksand
 //= require_tree .
+
+$(document).ready(function(){
+  var $holder = $('.container_gallery');
+
+  var $data = $holder.clone();
+
+  $('.coleccion li a').on('click', function(e){
+
+    $('.coleccion li').removeClass('active');
+
+    var $filterType = $(this).attr('class');
+    $(this).parent().addClass('active');
+    if($filterType == "all"){
+      var $filteredData = $data.find('img');
+    }else{
+      var $filteredData = $data.find('img[data-type=' + $filterType + ']');
+    }
+
+    $holder.quicksand($filteredData,{
+      duration: 800
+    });
+    return false;
+  });
+});
 
 

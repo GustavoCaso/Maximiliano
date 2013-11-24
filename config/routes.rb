@@ -1,15 +1,18 @@
 Maximiliano::Application.routes.draw do
 
-  devise_for :users
-  resources :products
+
+  resources :products, only:[:show]
 
   get "static/home"
   root 'static#home'
   get "help", to: "static#help", as: "help"
   get "us", to: "static#us", as: "us"
   get "tailor", to: "static#tailor", as: "tailor"
-
   get "admin", to: "admin#index", as: "admin"
+
+  get "collection", to: "products#collection", as: "collection"
+  get "urban", to: "products#urban", as: "urban"
+  get "accesories", to: "products#accesories", as: "accesories"
 
   namespace :admin do
     resources :products
