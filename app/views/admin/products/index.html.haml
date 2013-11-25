@@ -24,11 +24,8 @@
       %td= product.category
       %td= product.sub_category
       %td= image_tag product.picture.url(:thumb)
-      %td
-      %td
-      %td
-      %td
-      %td
+      - product.sizes.each do |size|
+        %td= number_to_currency(size.price, unit: "€", format: "%n%u")
       %td= link_to 'Show', admin_product_path(product)
       %td= link_to 'Edit', edit_admin_product_path(product)
       %td= link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }

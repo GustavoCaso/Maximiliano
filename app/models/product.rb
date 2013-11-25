@@ -6,4 +6,8 @@ class Product < ActiveRecord::Base
 
   CATEGORY = ["COLECCION", "URBANO", "ACCESORIOS"]
   SUBCATEGORY = {coleccion:["CHANNEL","PIEL","TRAJES","ABRIGOS"], urbano:["PUNTO CLASICO","PUNTO DECO", "BÁSICOS", "IMPERMEABLES"], accesorios:["MANTAS", "COJINES", "COLLARES", "CORREAS"]}
+
+  def sizes_exits_for size
+    sizes.exists?(size: size)
+  end
 end

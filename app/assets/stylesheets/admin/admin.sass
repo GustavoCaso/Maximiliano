@@ -2,7 +2,7 @@
 @import "utilities"
 
 
-
+// ########################### LAYOUT ##############
 #container
   .menu-admin
     background: $header_color
@@ -10,6 +10,10 @@
 
     .main-admin-menu
       padding-top: 2%
+      ul
+        li
+          a
+            color: $font_color
 
   table
     th
@@ -18,3 +22,27 @@
 
     td
       text-align: center
+
+// ########################## SHOW PRODUCTS ##########################
+
+.links
+  float: right
+.show_product
+  margin-top: 50px
+
+  .table_show_product
+    caption
+      font-size: 20px
+    tr
+      th
+        padding: 0 50px !important
+        font-size: 18px
+      td
+        font-size: 16px
+
+.show_image
+  float: right
+  margin-top: -150px
+  margin-right: 30px
+  border: 6px solid $font_color
+  border-radius: 10px

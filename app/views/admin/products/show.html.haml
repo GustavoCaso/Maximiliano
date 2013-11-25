@@ -1,22 +1,35 @@
 %p#notice= notice
 
-%p
-  %b Name:
-  = @product.name
-%p
-  %b Description:
-  = @product.description
-%p
-  %b Category:
-  = @product.category
-%p
-  %b Model:
-  = @product.sub_category
+.links
+  = link_to 'Edit', edit_admin_product_path(@product)
 
-%p
-  %b Picture:
+  = link_to 'Back', admin_products_path
+.show_product
+  %p
+    %b Name:
+    = @product.name
+  %p
+    %b Description:
+    = @product.description
+  %p
+    %b Category:
+    = @product.category
+  %p
+    %b Sub Category:
+    = @product.sub_category
+
+  %table.table_show_product
+    %caption PRICES
+    %tr
+      - @product.sizes.each do |size|
+        %th= size.size
+    %tr
+      - @product.sizes.each do |size|
+        %td= number_to_currency(size.price, unit: "€", format: "%n%u")
+.show_image
   = image_tag @product.picture.url(:medium)
 
-= link_to 'Edit', edit_admin_product_path(@product)
-\|
-= link_to 'Back', admin_products_path
+- Product::SUBCATEGORY.each  do |key, value|
+  %p= key
+  %p= value
+

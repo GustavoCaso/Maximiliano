@@ -15,11 +15,12 @@ class Admin::ProductsController < AdminController
   # GET /products/new
   def new
     @product = Product.new
-    @size = @product.sizes.build
+    ApplicationController::SIZES.each {|s| @product.sizes.new size: s}
   end
 
   # GET /products/1/edit
   def edit
+    ApplicationController::SIZES.each {|s| @product.sizes.new(size: s )unless @product.sizes_exits_for(s) }
   end
 
   # POST /products
