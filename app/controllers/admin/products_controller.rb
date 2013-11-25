@@ -26,7 +26,6 @@ class Admin::ProductsController < AdminController
   # POST /products
   # POST /products.json
   def create
-
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -43,6 +42,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    raise "hell"
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }

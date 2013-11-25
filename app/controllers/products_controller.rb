@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def urban
-    @collection = Product.all.where(category: "urban")
+    @collection = Product.all.where(category: "urbano")
   end
 
   def accesories

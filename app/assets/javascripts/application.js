@@ -18,20 +18,21 @@
 //= require_tree .
 
 $(document).ready(function(){
-  var $holder = $('.container_gallery');
+  var $holder = $('ul.ourHolder');
 
   var $data = $holder.clone();
 
-  $('.coleccion li a').on('click', function(e){
 
-    $('.coleccion li').removeClass('active');
+  $('ul.coleccion li a').on('click', function(e){
+
+    $('ul.collecion li').removeClass('active');
 
     var $filterType = $(this).attr('class');
     $(this).parent().addClass('active');
     if($filterType == "all"){
-      var $filteredData = $data.find('img');
+      var $filteredData = $data.find('li');
     }else{
-      var $filteredData = $data.find('img[data-type=' + $filterType + ']');
+      var $filteredData = $data.find('li[data-type=' + $filterType + ']');
     }
 
     $holder.quicksand($filteredData,{

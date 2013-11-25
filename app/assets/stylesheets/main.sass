@@ -1,5 +1,6 @@
 @import "../../../vendor/assets/stylesheets/bootstrap/bootstrap.scss"
 
+@import "utilities"
 
 .dropdown-menu
   letter-spacing: 1px
@@ -9,4 +10,9 @@
   li
     a
       padding: 0
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus
+  background-color: none
 

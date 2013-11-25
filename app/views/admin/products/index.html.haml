@@ -21,7 +21,7 @@
     %tr
       %td= product.name
       %td= product.description
-      %td= product.category
+      %td= product.category.upcase
       %td= product.sub_category
       %td= image_tag product.picture.url(:thumb)
       - product.sizes.each do |size|

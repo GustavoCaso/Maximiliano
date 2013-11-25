@@ -8,6 +8,8 @@ $(document).ready(function(){
   });
 
 
+
+
   /*FETCH THE CORRECT DATA FROM THE SUBCATEGORY MENU*/
 
    // var subcategory = $('#product_sub_category').html();
@@ -22,26 +24,4 @@ $(document).ready(function(){
    //      $(subcategory).empty();
    //    }
 
-
-   $('.coleccion_sub_category').hide();
-   $('.urbano_sub_category').hide();
-   $('.accesorios_sub_category').hide();
-
-   $('#product_category').on('change', function(){
-      var category = $('#product_category :selected').val();
-      console.log(category);
-      if ( category == "coleccion"){
-        $('.coleccion_sub_category').show();
-        $('.urbano_sub_category').hide();
-        $('.accesorios_sub_category').hide();
-      } else if(category == "urbano"){
-        $('.urbano_sub_category').show();
-        $('.coleccion_sub_category').hide();
-        $('.accesorios_sub_category').hide();
-      } else if(category == "accesorios"){
-        $('.accesorios_sub_category').show();
-        $('.coleccion_sub_category').hide();
-        $('.urbano_sub_category').hide();
-      }
-    });
   });
