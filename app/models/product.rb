@@ -1,8 +1,9 @@
 class Product < ActiveRecord::Base
   has_many :sizes
   accepts_nested_attributes_for :sizes, allow_destroy: true
-  has_attached_file :picture, :styles => { :medium => "300x300!", :thumb => "100x100!" }
+  has_attached_file :picture, :styles => { :medium => "250x250!", :thumb => "100x100!" }
 
+  scope :with_category, lambda{|category| where category: category}
 
   CATEGORY = ["COLECCION", "URBANO", "ACCESORIOS"]
   SUBCATEGORY = {coleccion:["CHANNEL","PIEL","TRAJES","ABRIGOS"], urbano:["PUNTO CLASICO","PUNTO DECO", "BÁSICOS", "IMPERMEABLES"], accesorios:["MANTAS", "COJINES", "COLLARES", "CORREAS"]}

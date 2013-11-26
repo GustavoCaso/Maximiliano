@@ -15,11 +15,9 @@
     .field
       = f.label :category
       = f.select :category, Product::CATEGORY.map{|x| [x, x.downcase]}, prompt: "Select a category"
-    -# - Product::SUBCATEGORY.each do |key, value|
-    -#   %div{ class: "field #{key}_sub_category"}
-    -#     = f.label :sub_category
-    -#     = f.select :sub_category, value
-    .sub_category
+    .field
+      = f.label :sub_category
+      = f.select :sub_category, Product::SUBCATEGORY
     .field
       = f.label :picture
       = f.file_field :picture

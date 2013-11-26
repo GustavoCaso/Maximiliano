@@ -1,19 +1,19 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
-  before_action :set_switch
+
 
   # GET /products
   # GET /products.json
   def collection
-    @collection = Product.all.where(category: "coleccion")
+    @collection = Product.with_category "coleccion"
   end
 
   def urban
-    @collection = Product.all.where(category: "urbano")
+    @collection = Product.with_category "urbano"
   end
 
   def accesories
-    @collection = Product.all.where(category: "accesorios")
+    @collection = Product.with_category "accesorios"
   end
 
   # GET /products/1
@@ -29,8 +29,6 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    def set_switch
-      @switch = params[:action]
-    end
+
 
 end

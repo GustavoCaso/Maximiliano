@@ -14,15 +14,17 @@
             - flash.each do |value,key|
               %p{class: "#{key}"}
                 = value
-          .col-lg-2.col-sm-12
+          .col-lg-1.col-sm-4.col-xs-4
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
+          .col-md-8.col-sm-8.col-xs-8.visible-md.visible-sm.visible-xs
+            %h1 Maximiliano de York
 
-          .col-lg-10.col-md-12.hidden-sm.hidden-xs
+          .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-2.hidden-sm.hidden-xs
             %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static; margin-bottom: 5px; *width: 180px;"}
               %li.dropdown-submenu
-                %a{href: collection_path } COLECCION
-                %ul.dropdown-menu.coleccion{class: ("visible" if @switch == "collection")}
+                %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
+                %ul.dropdown-menu.coleccion.quicksand{class: ("visible" if @switch == "collection")}
                   %li
                     %a{href: "#", class: "channel"} CHANNEL
                   %li
@@ -32,8 +34,8 @@
                   %li
                     %a{href: "#", class: "abrigos"} ABRIGOS
               %li.dropdown-submenu
-                %a{href: urban_path } URBANO
-                %ul.dropdown-menu.urbano{class: ("visible" if @switch == "urban")}
+                %a{href: urban_path, class:("underline" if @switch== "urban")  } URBANO
+                %ul.dropdown-menu.urbano.quicksand{class: ("visible" if @switch == "urban")}
                   %li
                     %a{href: "#", class: "punto_clasico"} PUNTO CLASICO
                   %li
@@ -43,8 +45,8 @@
                   %li
                     %a{href: "#", class: "impermeables"} IMPERMEABLES
               %li.dropdown-submenu
-                %a{href: accesories_path } ACCESORIOS
-                %ul.dropdown-menu.accesorios{class: ("visible" if @switch == "accesories")}
+                %a{href: accesories_path, class:("underline" if @switch== "accesories")  } ACCESORIOS
+                %ul.dropdown-menu.accesorios.quicksand{class: ("visible" if @switch == "accesories")}
                   %li
                     %a{href: "#", class: "mantas"} MANTAS
                   %li
@@ -54,9 +56,9 @@
                   %li
                     %a{href: "#", class: "correas"} CORREAS
               %li
-                = link_to "SASTRE", tailor_path
+                = link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
               %li
-                = link_to "CARRITO", "#"
+                = link_to "CARRITO", "#", class:("underline" if @switch== "shop")
             -# %nav.main_nav
             -#   %ul
             -#     %li

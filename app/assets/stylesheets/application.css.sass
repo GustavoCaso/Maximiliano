@@ -17,8 +17,8 @@
 @import "utilities"
 
 
-body, html
-  height: 100%
+body
+  min-height: 100%
   #container
     height: 100%
     .color_header
@@ -66,10 +66,10 @@ body, html
       margin-top: 20px
       li
         float: left
-        padding-right: 40px
+        margin-right: 40px
         a
           color: $font_color
-          font-size: 24px
+          font-size: 20px
 
           &:hover
             background: none
@@ -80,17 +80,21 @@ body, html
         li
           a
             font-size: 14px
+      .underline
+        border-bottom: 2px solid $font_color
       .visible
         display: block
+      .active
+        border-bottom: 2px solid $font_color
       .coleccion
-        left: 15px
+        left: 41px
 
 
       .urbano
         left: 210px
 
       .accesorios
-        left: 370px
+        left: 343px
 
 
       // .dropdown-submenu:hover > .dropdown-menu
@@ -103,7 +107,7 @@ body, html
     .small-menu
       ul
 
-        padding-right: 3.857em // 54px/14px
+        // padding-right: 3.857em // 54px/14px
         li
           display: block
           list-style-type: none
@@ -111,7 +115,7 @@ body, html
           font-size: 1.429em  //14px/20px
 
         a
-          display: block
+          // display: block
 
 
     .footer

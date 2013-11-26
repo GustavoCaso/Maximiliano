@@ -7,21 +7,4 @@ $(document).ready(function(){
 
   });
 
-
-
-
-  /*FETCH THE CORRECT DATA FROM THE SUBCATEGORY MENU*/
-
-   // var subcategory = $('#product_sub_category').html();
-
-   //   $('#product_category').on('change', function(){
-   //    var category = $('#product_category :selected').val();
-   //    var options = $(subcategory).filter("optgroup[label='" + category + "']").html();
-   //    if (options){
-   //      $(subcategory).html(options);
-
-   //    }else{
-   //      $(subcategory).empty();
-   //    }
-
-  });
+});
