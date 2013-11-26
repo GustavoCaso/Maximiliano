@@ -17,7 +17,7 @@
       = f.select :category, Product::CATEGORY.map{|x| [x, x.downcase]}, prompt: "Select a category"
     .field
       = f.label :sub_category
-      = f.select :sub_category, Product::SUBCATEGORY
+      = f.select :sub_category, Product::SUBCATEGORY, prompt: "Select sub category"
     .field
       = f.label :picture
       = f.file_field :picture
