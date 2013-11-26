@@ -1,6 +1,7 @@
 Maximiliano::Application.routes.draw do
 
 
+  devise_for :users
   resources :sizes
 
   resources :products, only:[:show]
@@ -18,6 +19,7 @@ Maximiliano::Application.routes.draw do
 
   namespace :admin do
     resources :products
+    resources :users
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

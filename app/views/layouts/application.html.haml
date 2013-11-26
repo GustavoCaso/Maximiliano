@@ -2,16 +2,16 @@
 %html
   %head
     %title Maximiliano
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = stylesheet_link_tag "application", media: "all"
     = stylesheet_link_tag('http://fonts.googleapis.com/css?family=Raleway:400,600,700')
-    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     #container
       .row.color_header
         .container
           - if flash
-            - flash.each do |value,key|
+            - flash.each do |key,value|
               %p{class: "#{key}"}
                 = value
           .col-lg-1.col-sm-4.col-xs-4

@@ -20,6 +20,7 @@ $(document).ready(function(){
     }
 
     $holder.quicksand($filteredData,{
+      easing: 'easeInOutQuad',
       duration: 800
     });
     return false;
