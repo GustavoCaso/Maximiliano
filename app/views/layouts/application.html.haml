@@ -14,11 +14,12 @@
             - flash.each do |key,value|
               %p{class: "#{key}"}
                 = value
-          .col-lg-1.col-md-4.col-sm-6.col-xs-6
+          .col-lg-1.col-md-4.hidden-sm.hidden-xs
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
-          .col-md-8.col-sm-6.col-xs-6.visible-md.visible-sm.visible-xs
-            %h1 Maximiliano de York
+          .col-md-8.col-sm-12.col-xs-12.col-md-pull-1.visible-md.visible-sm.visible-xs
+            #logo_2
+              %h1 Maximiliano de York
 
           .col-lg-10.col-lg-offset-1.col-md-10.col-md-offset-2.hidden-sm.hidden-xs
             %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static; margin-bottom: 5px; *width: 180px;"}
