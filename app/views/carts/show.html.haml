@@ -1,0 +1,6 @@
+%h1 Tu carrito
+
+- @cart.line_items.each do |line_item|
+  %p= line_item.size.product.name
+  %p= number_to_currency(line_item.size.price, unit: "€", format: "%n%u")
+

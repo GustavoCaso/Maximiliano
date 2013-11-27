@@ -1,6 +1,12 @@
 Maximiliano::Application.routes.draw do
 
 
+  resources :line_items
+
+
+
+  resources :carts
+
   devise_for :users
   resources :products, only:[:show]
 

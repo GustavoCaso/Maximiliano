@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @related_product = Product.with_category(@product.category) - [@product]
   end
 
 
