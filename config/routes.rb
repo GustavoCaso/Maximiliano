@@ -2,8 +2,6 @@ Maximiliano::Application.routes.draw do
 
 
   devise_for :users
-  resources :sizes
-
   resources :products, only:[:show]
 
   get "static/home"

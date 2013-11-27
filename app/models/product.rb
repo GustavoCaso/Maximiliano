@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   has_many :sizes
   accepts_nested_attributes_for :sizes, allow_destroy: true
-  has_attached_file :picture, :styles => { :medium => "250x250!", :thumb => "100x100!" }
+  has_attached_file :picture, :styles => {:large => "300x300!", :medium => "250x250!", :thumb => "100x100!" }
 
   scope :with_category, lambda{|category| where category: category}
 

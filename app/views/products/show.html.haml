@@ -1,20 +1,35 @@
-%p#notice= notice
+.container
+  .show_container
+    .row
+      .col-lg-4.col-md-4
+        = image_tag @product.picture.url(:large), class: "show_img"
+      .col-lg-8.col-md-8.manual_height
+        .info_product
+          %h3
+            = @product.name
+          %h3 Caracteristicas
+          %p= @product.description
 
-%p
-  %b Name:
-  = @product.name
-%p
-  %b Description:
-  = @product.description
-%p
-  %b Category:
-  = @product.category
-%p
-  %b Model:
-  = @product.sub_category
 
-%p
-  %b Picture:
-  = image_tag @product.picture.url(:medium)
+          %table.price_list
+            %tr
+              %th= image_tag ("xs_size.png"), class: "img-responsive"
+              %th= image_tag ("s_size.png"), class: "img-responsive"
+              %th= image_tag ("m_size.png"), class: "img-responsive"
+              %th= image_tag ("g_size.png"), class: "img-responsive"
+              %th= image_tag ("xg_size.png"), class: "img-responsive"
+            %tr
+              - @product.sizes.each do |product|
+                %td= number_to_currency(product.price, unit: "€", format: "%n%u")
+
+          = button_to "Añadir al carrito", {}, {:class => "pull-right"}
+    %hr
+
+    .row
+      %ul.related_pictures
+        - Product.all.where(category: @product.category).each do |p|
+          %li
+            = image_tag p.picture.url(:thumb), class: "small_img"
+
 
 
