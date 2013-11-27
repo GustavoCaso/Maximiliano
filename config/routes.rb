@@ -15,6 +15,8 @@ Maximiliano::Application.routes.draw do
   get "urban", to: "products#urban", as: "urban"
   get "accesories", to: "products#accesories", as: "accesories"
 
+  get '/admin', to: "admin#index", as: :user_root
+
   namespace :admin do
     resources :products
     resources :users
