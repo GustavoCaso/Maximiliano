@@ -59,34 +59,8 @@
               %li
                 = link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
               %li
-                = link_to "CARRITO", cart_path, class:("underline" if @switch== "shop")
-            -# %nav.main_nav
-            -#   %ul
-            -#     %li
-            -#       = link_to "COLECCIÓN", "#"
-            -#       %ul.submenu.coleccion
-            -#         %li= link_to "CHANNEL", '#'
-            -#         %li PIEL
-            -#         %li TRAJES
-            -#         %li ABRIGOS
-            -#     %li
-            -#       = link_to "URBANO", "#"
-            -#       %ul.submenu.urbano
-            -#         %li PUNTO CLASICO
-            -#         %li PUNTO DECO
-            -#         %li BÁSICOS
-            -#         %li IMPERMEABLES
-            -#     %li
-            -#       = link_to "ACCESORIOS", "#"
-            -#       %ul.submenu.accesorios
-            -#         %li MANTAS
-            -#         %li COJINES
-            -#         %li COLLARES
-            -#         %li CORREAS
-            -#     %li
-            -#       = link_to "SASTRE", tailor_path
-            -#     %li
-            -#       = link_to "CARRITO", "#"
+                = link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
+
           .col-sm-12.visible-sm.visible-xs
             .panel-group#accordion
               %a.pull-right{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} small
@@ -114,6 +88,7 @@
                   %ul
                     %li= link_to "AYUDA", help_path
                     %li= link_to  "NOSOTROS", us_path
+                    %li= link_to  "MI CUENTA", new_user_session_path
               .col-lg-4.col-lg-offset-3.col-md-3.col-md-offset-4.col-sm-3.col-sm-offset-4
                 %span.navbar-text
                   = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"

@@ -30,36 +30,6 @@ body
       .no-border
         &:hover
           border: none
-    // nav.main_nav
-    //   height: 100px
-    //   line-height: 100px
-    //   ul
-    //     list-style-type: none
-    //     position: relative
-    //     li
-    //       font-size: 18px
-    //       letter-spacing: 1.5px
-    //       color: $font_color
-    //       float: left
-    //       margin-right: 70px
-    //       font-weight: 600
-
-    //       a
-
-
-
-    //       &:hover > ul.submenu
-    //         display: block
-    //         visibility: visible
-
-    //       ul.submenu
-    //         display: none
-    //         position: absolute
-    //       .coleccion, .urbano, .accesorios
-    //         top: 0
-    //         margin-top: 31px
-    //         li
-    //           font-size: 13px
 
     .dropdown-menu
       position: absolute
@@ -127,8 +97,11 @@ body
           li
             float: left
             margin-right: 8px
-          li:first-child:after
+          li:after
             content: "|"
+            margin-left: 5px
+          li:last-child:after
+            content: ""
             margin-left: 5px
       span
         a

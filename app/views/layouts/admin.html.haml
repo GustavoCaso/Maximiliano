@@ -16,7 +16,7 @@
           .collapse.navbar-collapse
             %ul.nav.navbar-nav.navbar-text.main-admin-menu
               %ul.nav.navbar-nav
-                %li
-                  = link_to "PRODUCTOS", admin_products_path
+                %li= link_to "LOGOUT", destroy_user_session_path, method: :delete
+                %li= link_to "PRODUCTOS", admin_products_path
 
         = yield
