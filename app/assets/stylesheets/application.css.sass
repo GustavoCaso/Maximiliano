@@ -21,72 +21,77 @@ body
   min-height: 100%
   #container
     height: 100%
+    overflow: hidden
     .color_header
       background: $header_color
       padding: 10px 0
 
     #logo
-      margin: 0 60px 0 10px
+
       .no-border
         &:hover
           border: none
+    #logo_2
+      margin-top: 15px
 
-    .dropdown-menu
-      position: absolute
-      margin-top: 20px
-      li
-        float: left
-        margin-right: 40px
-        a
-          color: $font_color
-          font-size: 20px
-
-          &:hover
-            background: none
-
-      .dropdown-submenu > .dropdown-menu
-        top: 40px
+    .main_menu
+      bottom: 25px
+      left: 204px
+      .dropdown-menu
 
         li
+          float: left
+          margin-right: 40px
           a
-            font-size: 14px
-      .underline
-        border-bottom: 2px solid $font_color
-      .visible
-        display: block
-      .active
-        border-bottom: 2px solid $font_color
-      .coleccion
-        left: 41px
+            color: $font_color
+            font-size: 20px
 
+            &:hover
+              background: none
 
-      .urbano
-        left: 210px
+        .dropdown-submenu > .dropdown-menu
+          top: 30px
 
-      .accesorios
-        left: 343px
-
-
-      // .dropdown-submenu:hover > .dropdown-menu
-      //   display: block
-
-
-
-
-
-    .small-menu
-      ul
-
-        // padding-right: 3.857em // 54px/14px
-        li
+          li
+            a
+              font-size: 14px
+        .underline
+          border-bottom: 2px solid $font_color
+        .visible
           display: block
-          list-style-type: none
-          text-align: center
-          font-size: 1.429em  //14px/20px
+        .active
+          border-bottom: 2px solid $font_color
+        .coleccion
+          left: 41px
 
-        a
-          // display: block
 
+        .urbano
+          left: 210px
+
+        .accesorios
+          left: 343px
+
+
+        // .dropdown-submenu:hover > .dropdown-menu
+        //   display: block
+
+
+
+      .small-menu-button
+        position: relative
+        left: 673px
+        bottom: 33px
+
+
+      .small-menu
+        ul
+
+          // padding-right: 3.857em // 54px/14px
+          li
+            display: block
+            list-style-type: none
+            text-align: center
+            font-size: 1.429em  //14px/20px
 
     .footer
       color: $font_color !important

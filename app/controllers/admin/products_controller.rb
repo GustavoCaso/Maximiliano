@@ -42,7 +42,6 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
@@ -72,6 +71,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture, sizes_attributes:[:size, :price, :id])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture, :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount])
     end
 end

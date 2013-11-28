@@ -23,6 +23,7 @@ Maximiliano::Application.routes.draw do
   get "collection", to: "products#collection", as: "collection"
   get "urban", to: "products#urban", as: "urban"
   get "accesories", to: "products#accesories", as: "accesories"
+  get "outlet", to: "products#outlet"
 
   get '/admin', to: "admin#index", as: :user_root
 

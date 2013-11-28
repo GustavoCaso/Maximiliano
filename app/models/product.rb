@@ -15,4 +15,9 @@ class Product < ActiveRecord::Base
   end
 
 
+  def stock?
+     not sizes.sum {|size| size.stock.to_i}.zero?
+  end
+
+
 end

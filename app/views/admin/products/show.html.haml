@@ -22,10 +22,18 @@
     %caption PRICES
     %tr
       - @product.sizes.each do |size|
-        %th= size.size
+        - if size.price
+          %th= size.size
     %tr
       - @product.sizes.each do |size|
-        %td= number_to_currency(size.price, unit: "€", format: "%n%u")
+        - if size.price
+          %td= number_to_currency(size.price_after_discount, unit: "€", format: "%n%u")
+    %tr
+      - @product.sizes.each do |size|
+        - if size.stock?
+          %td
+            Stock
+            = size.stock
 .show_image
   = image_tag @product.picture.url(:medium)
 

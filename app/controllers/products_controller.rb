@@ -16,6 +16,10 @@ class ProductsController < ApplicationController
     @collection = Product.with_category "accesorios"
   end
 
+  def outlet
+    @collection = Product.all.where(outlet: true)
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show

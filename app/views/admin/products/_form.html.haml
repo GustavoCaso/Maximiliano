@@ -19,6 +19,9 @@
       = f.label :sub_category
       = f.select :sub_category, Product::CATEGORIES, prompt: "Select sub category"
     .field
+      = f.label :outlet
+      = f.check_box :outlet
+    .field
       = f.label :picture
       = f.file_field :picture
     .actions
@@ -33,6 +36,13 @@
         .field
           = ff.label :price
           = ff.text_field :price
+        .field
+          = ff.label :stock
+          = ff.text_field :stock
+        .field
+          = ff.label :discount
+          = ff.text_field :discount
+
 
 
 

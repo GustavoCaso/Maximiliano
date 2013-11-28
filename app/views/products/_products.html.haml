@@ -3,6 +3,7 @@
     .row.gallery_row
       %ul.ourHolder
         - @collection.in_groups_of(3, false) do |collections|
-          - collections.each do |collection|
-            %li{class: "item col-xs-6 col-lg-4 col-md-4", :data => {id: collection.id, type: collection.sub_category.downcase}}
-              = link_to (image_tag collection.picture.url(:medium), class:'img-responsive gallery_img'), product_path(collection)
+          - collections.each do |product|
+            - if product.stock?
+              %li{class: "item col-xs-6 col-lg-4 col-md-4", :data => {id: product.id, type: product.sub_category.downcase}}
+                = link_to (image_tag product.picture.url(:medium), class:'img-responsive gallery_img'), product_path(product)
