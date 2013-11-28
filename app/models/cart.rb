@@ -14,7 +14,7 @@ class Cart < ActiveRecord::Base
     else
       current_item = line_items.build(size_id: size_id)
     end
-    current_item.size.stock -1
+
     current_item
   end
 end

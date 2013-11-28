@@ -27,7 +27,14 @@ class Admin::ProductsController < AdminController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-    @product.sizes.each {|size| size.destroy!  if size.price.nil?}
+
+
+    @product.sizes.each do |size|
+      size.destroy! if size.price.nil?
+      size.position = ["XS", "S", "M", "G", "XG"].index(size.size)
+    end
+
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully created.' }

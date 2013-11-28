@@ -1,27 +1,28 @@
-%h1 Tu carrito
+.container
+  .col-lg-12
+    %table.table_cart
+      %thead
+        %tr
+          %th
+          %th DETALLE
+          %th TALLA
+          %th UNIDADES
+          %th PRECIO
+      %tbody
+        - @cart.line_items.each do |line_item|
+          %tr
+            %td= image_tag (line_item.size.product.picture.url(:thumb)), class: "table_img"
+            %td= line_item.size.product.name
+            %td= image_tag ("#{line_item.size.size.downcase}_size_cart.png"), class: "img-responsive"
+            %td= line_item.quantity
+            %td= number_to_currency(line_item.total_price, unit: "€", format: "%n%u")
+            %td= button_to "Delete" ,line_item, method: :delete, data: {confirm:"Are you sure ?"}
+        %tr.total_line
+          %td{colspan: 4} Total
+          %td= @cart.total_price
 
-
-%table
-  %tr
-    %th Nombre
-    %th Talla
-    %th Precio
-    %th Cantidad
-    %th Total
-  - @cart.line_items.each do |line_item|
-    %tr
-      %td= line_item.size.product.name
-      %td= line_item.size.size
-      %td= number_to_currency(line_item.size.price, unit: "€", format: "%n%u")
-      %td= line_item.quantity
-      %td= line_item.total_price
-  %tr.total_line
-    %td{colspan: 4} Total
-    %td= @cart.total_price
-
-= button_to "Vaciar Carrito", carts_path(@cart), method: :delete, data:{confirm: "Are you sure ?"}
-= button_to "Checkout", new_order_path, method: :get
-
+    = button_to "Vaciar Carrito", @cart, method: :delete, data:{confirm: "Are you sure ?"}
+    = button_to "Checkout", new_order_path, method: :get
 
 
 

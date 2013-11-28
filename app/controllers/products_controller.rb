@@ -5,19 +5,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def collection
-    @collection = Product.with_category "coleccion"
+    @collection = Product.with_category( "coleccion").not_outlet
   end
 
   def urban
-    @collection = Product.with_category "urbano"
+    @collection = Product.with_category( "urbano").not_outlet
   end
 
   def accesories
-    @collection = Product.with_category "accesorios"
+    @collection = Product.with_category( "accesorios").not_outlet
   end
 
   def outlet
-    @collection = Product.all.where(outlet: true)
+    @collection = Product.outlet
   end
 
   # GET /products/1

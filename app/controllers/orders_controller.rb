@@ -16,11 +16,24 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @order = Order.new
     if @cart.line_items.empty?
       redirect_to root_url, notice: "Carrito vacio"
       return
     end
-    @order = Order.new
+
+    no_stock = @order.check_stock(@cart)
+
+    if no_stock.empty?
+      @order.add_line_items_from_cart(@cart)
+      @order.save
+      redirect_to @order, notice: 'Order was successfully created.'
+    else
+      no_stock.map!{|item| item.size.product.name}
+      redirect_to cart_path, alert: "There are no stock for this item: #{no_stock.to_sentence}."
+    end
+
+
   end
 
   # GET /orders/1/edit
@@ -31,17 +44,8 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    @order.add_line_items_from_cart(@cart)
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @order }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # PATCH/PUT /orders/1

@@ -15,7 +15,7 @@
             %tr
               - @product.sizes.each do |size|
                 - if size.stock?
-                  %th= image_tag ("#{size.size.downcase}_size.png"), class: "img-responsive"
+                  %th= image_tag ("#{size.size.downcase}_size_product.png"), class: "img-responsive"
 
 
             %tr
@@ -26,6 +26,7 @@
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
                       %p= size.price_after_discount
                     - else
+                      %p{style: "visibility: hidden; "} bkb
                       %p= number_to_currency(size.price, unit: "€", format: "%n%u")
                     = form_tag(line_items_path, method: :create) do
                       = hidden_field_tag "size_id", size.id
