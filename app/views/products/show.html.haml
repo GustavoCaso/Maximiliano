@@ -1,20 +1,37 @@
-%p#notice= notice
+.container
+  .show_container
+    .row
+      .col-lg-4.col-md-4
+        = image_tag @product.picture.url(:large), class: "show_img"
+      .col-lg-8.col-md-8.manual_height
+        .info_product
+          %h3
+            = @product.name
+          %h3 Caracteristicas
+          %p= @product.description
 
-%p
-  %b Name:
-  = @product.name
-%p
-  %b Description:
-  = @product.description
-%p
-  %b Category:
-  = @product.category
-%p
-  %b Model:
-  = @product.sub_category
 
-%p
-  %b Picture:
-  = image_tag @product.picture.url(:medium)
+          %table.price_list
+            %tr
+              - @product.sizes.each do |size|
+                %th= image_tag ("#{size.size.downcase}_size.png"), class: "img-responsive"
+
+
+            %tr
+              - @product.sizes.each do |size|
+                %td
+                  = number_to_currency(size.price, unit: "€", format: "%n%u")
+                  = form_tag(line_items_path, method: :create) do
+                    = hidden_field_tag "size_id", size.id
+                    = submit_tag "Añadir a cesta"
+
+
+    %hr
+
+    .row
+      %ul.related_pictures
+        - @related_product.each do |product|
+          %li
+            = link_to image_tag(product.picture.url(:thumb), class: "small_img"), product_path(product)
 
 

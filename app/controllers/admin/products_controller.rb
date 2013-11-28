@@ -27,7 +27,7 @@ class Admin::ProductsController < AdminController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
+    @product.sizes.each {|size| size.destroy!  if size.price.nil?}
     respond_to do |format|
       if @product.save
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully created.' }
@@ -42,7 +42,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    raise "hell"
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }

@@ -1,9 +1,16 @@
 Maximiliano::Application.routes.draw do
 
 
-  devise_for :users
-  resources :sizes
+  resources :orders
 
+  resources :line_items
+
+
+
+  get "cart", to: "carts#show"
+  delete "carts", to: "carts#destroy"
+
+  devise_for :users
   resources :products, only:[:show]
 
   get "static/home"
@@ -16,6 +23,8 @@ Maximiliano::Application.routes.draw do
   get "collection", to: "products#collection", as: "collection"
   get "urban", to: "products#urban", as: "urban"
   get "accesories", to: "products#accesories", as: "accesories"
+
+  get '/admin', to: "admin#index", as: :user_root
 
   namespace :admin do
     resources :products

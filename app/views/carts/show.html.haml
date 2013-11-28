@@ -1,0 +1,29 @@
+%h1 Tu carrito
+
+
+%table
+  %tr
+    %th Nombre
+    %th Talla
+    %th Precio
+    %th Cantidad
+    %th Total
+  - @cart.line_items.each do |line_item|
+    %tr
+      %td= line_item.size.product.name
+      %td= line_item.size.size
+      %td= number_to_currency(line_item.size.price, unit: "€", format: "%n%u")
+      %td= line_item.quantity
+      %td= line_item.total_price
+  %tr.total_line
+    %td{colspan: 4} Total
+    %td= @cart.total_price
+
+= button_to "Vaciar Carrito", carts_path(@cart), method: :delete, data:{confirm: "Are you sure ?"}
+= button_to "Checkout", new_order_path, method: :get
+
+
+
+
+
+

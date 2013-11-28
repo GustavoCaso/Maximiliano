@@ -4,5 +4,5 @@
       %ul.ourHolder
         - @collection.in_groups_of(3, false) do |collections|
           - collections.each do |collection|
-            %li{class: "item", :data => {id: collection.id, type: collection.sub_category.downcase}}
+            %li{class: "item col-xs-6 col-lg-4 col-md-4", :data => {id: collection.id, type: collection.sub_category.downcase}}
               = link_to (image_tag collection.picture.url(:medium), class:'img-responsive gallery_img'), product_path(collection)
