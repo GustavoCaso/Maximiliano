@@ -56,10 +56,10 @@
                     %a{href: "#", class: "collares"} COLLARES
                   %li
                     %a{href: "#", class: "correas"} CORREAS
-              %li
-                = link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
-              %li
-                = link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
+              %li= link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
+              
+              - if Cart.find_by_id(session[:cart_id])
+                %li= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
 
           .col-sm-12.visible-sm.visible-xs
             .panel-group#accordion

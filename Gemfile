@@ -17,6 +17,8 @@ gem "paperclip", "~> 3.5.2"
 # login system
 gem "devise"
 
+#paypal integration
+gem "paypal-express"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
