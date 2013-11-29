@@ -6,7 +6,7 @@
 
 %h2 Detales de su pedido
 
-- @line_item.each do |line_item|
+- @order.line_items.each do |line_item|
   %ul.info
     %li= line_item.size.product.name
     %li= line_item.size.size

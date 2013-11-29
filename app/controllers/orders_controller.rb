@@ -74,9 +74,7 @@ class OrdersController < ApplicationController
   
   def notify_success
     @order = Order.find_by_token(params[:token])
-    @line_item = @order.line_items
-    @order.line_items.each {|line_item| line_item.cart = nil}
-    session[:cart_id] = nil
+    @cart.destroy
   end
   
   def notify_cancel
