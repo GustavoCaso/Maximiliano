@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   
   validates_presence_of :name, :email, :address, :city, :postcode
 
+  before_create :set_number
+  
   def check_stock(cart)
     cart.line_items.select { |item| not item.size.stock? }
   end
@@ -36,4 +38,10 @@ class Order < ActiveRecord::Base
       }
     end
   end
+  
+  private
+    def set_number
+      self.number = Order.all.order(:number).last.number + 1
+    end
+  
 end
