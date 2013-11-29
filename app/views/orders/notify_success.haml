@@ -1,0 +1,25 @@
+%h1 
+  Su compra se ha realizado con éxito.
+  Gracias
+  = @order.name 
+  por comprar en Maximiliano de York
+
+%h2 Detales de su pedido
+
+- @line_item.each do |line_item|
+  %ul.info
+    %li= line_item.size.product.name
+    %li= line_item.size.size
+    %li= line_item.size.price
+    
+%p Se enviara a la siguiente direccion:
+%span
+  = @order.address
+  ,
+  = @order.city
+  ,
+  = @order.postcode    
+    
+    
+
+    

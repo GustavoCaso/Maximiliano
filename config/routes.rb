@@ -1,8 +1,12 @@
 Maximiliano::Application.routes.draw do
 
 
-  resources :orders
-
+  resources :orders do
+    collection do
+      get "notify_success"
+      get "notify_cancel"
+    end
+  end
   resources :line_items
 
 
