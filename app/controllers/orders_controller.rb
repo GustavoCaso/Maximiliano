@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.add_line_items_from_cart(@cart)
     no_stock = @order.check_stock(@cart)
     
     if no_stock.any?
@@ -74,7 +75,9 @@ class OrdersController < ApplicationController
   
   def notify_success
     @order = Order.find_by_token(params[:token])
-    @cart.destroy
+    @order.line_items
+    @order.update_stock
+    session[:cart_id] = nil
   end
   
   def notify_cancel

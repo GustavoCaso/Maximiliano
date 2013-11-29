@@ -3,7 +3,6 @@
 %table
   %tr
     %th Name
-    %th Description
     %th Category
     %th Sub Category
     %th Picture
@@ -14,21 +13,49 @@
     %th XG
 
     %th
-    %th
-    %th
 
   - @products.each do |product|
     %tr
       %td= product.name
-      %td= product.description
       %td= product.category.upcase
       %td= product.sub_category
       %td= image_tag product.picture.url(:thumb)
-      - product.sizes.each do |size|
-        %td= number_to_currency(size.price, unit: "€", format: "%n%u")
-      %td= link_to 'Show', admin_product_path(product)
-      %td= link_to 'Edit', edit_admin_product_path(product)
-      %td= link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        - s = product.sizes.find_by_size("XS")
+        - if s
+          = number_to_currency(s.price, unit: "€", format: "%n%u")
+          %br
+          == (x #{s.stock.to_i})
+      %td
+        - s = product.sizes.find_by_size("S")
+        - if s
+          = number_to_currency(s.price, unit: "€", format: "%n%u")
+          %br
+          == (x #{s.stock.to_i})
+      %td
+        - s = product.sizes.find_by_size("M")
+        - if s
+          = number_to_currency(s.price, unit: "€", format: "%n%u")
+          %br
+          == (x #{s.stock.to_i})
+      %td
+        - s = product.sizes.find_by_size("G")
+        - if s
+          = number_to_currency(s.price, unit: "€", format: "%n%u")
+          %br
+          == (x #{s.stock.to_i})
+      %td
+        - s = product.sizes.find_by_size("XG")
+        - if s
+          = number_to_currency(s.price, unit: "€", format: "%n%u")
+          %br
+          == (x #{s.stock.to_i})
+      %td
+        = link_to 'Show', admin_product_path(product)
+        |
+        = link_to 'Edit', edit_admin_product_path(product)
+        |
+        = link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

@@ -6,11 +6,17 @@ class Order < ActiveRecord::Base
   def check_stock(cart)
     cart.line_items.select { |item| not item.size.stock? }
   end
+  
+  def update_stock
+    line_items.each do |line_item|
+      s = line_item.size
+      line_item.stock -= line_item.quantity
+      s.save
+    end
+  end
 
   def add_line_items_from_cart(cart)
-    cart.line_items.each do |item|
-      line_items << item
-    end
+    line_items = cart.line_items
   end
   
   def total
