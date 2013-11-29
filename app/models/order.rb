@@ -10,17 +10,19 @@ class Order < ActiveRecord::Base
   def update_stock
     line_items.each do |line_item|
       s = line_item.size
-      line_item.stock -= line_item.quantity
+      line_item.size.stock -= line_item.quantity
       s.save
     end
   end
 
   def add_line_items_from_cart(cart)
-    line_items = cart.line_items
+    cart.line_items.each do |item|
+      line_items << item
+    end
   end
   
   def total
-    line_items.sum{|line_item| line_item.size.price}
+    line_items.to_a.sum{|line_item| line_item.size.price * line_item.quantity.to_f }
   end
   
   def payment_params
@@ -29,6 +31,7 @@ class Order < ActiveRecord::Base
         :name => item.size.product.name,
         :description => item.size.size,
         :amount => item.size.price,
+        :quantity => item.quantity,
         :category => :Digital
       }
     end
