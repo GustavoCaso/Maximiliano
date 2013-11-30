@@ -9,20 +9,17 @@
     #container
       .row.color_header
         .container
-          - if flash
-            - flash.each do |key,value|
-              %p{class: "#{key}"}
-                = value
-          .col-lg-2.col-md-2.col-sm-4.col-xs-4
+          .col-lg-2.col-md-2.col-sm-2.col-xs-2
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
-          .col-md-9.col-sm-7.col-xs-7.col-lg-10
+          .col-md-10.col-sm-6.col-xs-7.col-lg-10
             #logo_2
-              %h1 Maximiliano de Yorky
+            = image_tag ("maximiliano_2.png")
+
 
           .row
             .col-lg-12.col-md-12.col-lg-push-2.col-md-push-2.hidden-sm.hidden-xs.main_menu
-              %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
+              %ul.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
                 %li.dropdown-submenu
                   %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
                   %ul.dropdown-menu.coleccion.quicksand{class: ("visible" if @switch == "collection")}
@@ -64,35 +61,61 @@
                   %li= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
 
 
-            .col-sm-12.visible-sm.visible-xs
-              .panel-group#accordion
-                %a.small-menu-button{:href => "#collapseOne", data: {toggle: "collapse", parent: "#accordion"}} small
+            .col-sm-10.col-xs-10.col-sm-push-2.col-xs-push-2.visible-sm.visible-xs.small-menu
+              %ul.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
+                %li.dropdown-submenu
+                  %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
+                  %ul.dropdown-menu.coleccion.quicksand{class: ("visible" if @switch == "collection")}
+                    %li
+                      %a{href: "#", class: "channel"} CHANNEL
+                    %li
+                      %a{href: "#", class: "piel"} PIEL
+                    %li
+                      %a{href: "#", class: "trajes"} TRAJES
+                    %li
+                      %a{href: "#", class: "abrigos"} ABRIGOS
+                %li.dropdown-submenu
+                  %a{href: urban_path, class:("underline" if @switch== "urban")  } URBANO
+                  %ul.dropdown-menu.urbano.quicksand{class: ("visible" if @switch == "urban")}
+                    %li
+                      %a{href: "#", class: "punto_clasico"} PUNTO CLASICO
+                    %li
+                      %a{href: "#", class: "punto_deco"} PUNTO DECO
+                    %li
+                      %a{href: "#", class: "basico"} BÁSICOS
+                    %li
+                      %a{href: "#", class: "impermeables"} IMPERMEABLES
+                %li.dropdown-submenu
+                  %a{href: accesories_path, class:("underline" if @switch== "accesories")  } ACCESORIOS
+                  %ul.dropdown-menu.accesorios.quicksand{class: ("visible" if @switch == "accesories")}
+                    %li
+                      %a{href: "#", class: "mantas"} MANTAS
+                    %li
+                      %a{href: "#", class: "cojines"} COJINES
+                    %li
+                      %a{href: "#", class: "collares"} COLLARES
+                    %li
+                      %a{href: "#", class: "correas"} CORREAS
+                - if outlet?
+                  %li= link_to "OUTLET", outlet_path, class:("underline" if @switch== "outlet")
+                %li= link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
 
-                #collapseOne.panel-collapse.collapse.small-menu
-                  %ul
-                    %li
-                      = link_to "COLECCIÓN", collection_path
-                    %li
-                      = link_to "URBANO", urban_path
-                    %li
-                      = link_to "ACCESORIOS", accesories_path
-                    %li
-                      = link_to "SASTRE", tailor_path
-                    - if Cart.find_by_id(session[:cart_id])
-                      %li
-                        = link_to "CARRITO", cart_path()
+                - if Cart.find_by_id(session[:cart_id])
+                  %li= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
+
       = yield
+
 
       .row
         .nav.nav-bar-default.navbar-fixed-bottom.footer
           .container
             .row
-              .col-lg-5.col-sm-6
+              .col-lg-5.col-sm-6.col-xs-6
                 %nav.footer_nav.navbar-text
                   %ul
                     %li= link_to "AYUDA", help_path
                     %li= link_to  "NOSOTROS", us_path
                     %li= link_to  "MI CUENTA", new_user_session_path
-              .col-lg-4.col-lg-offset-3.col-md-6.col-sm-6
+              .col-lg-4.col-lg-offset-3.col-md-6.col-sm-6.col-xs-6
                 %span.navbar-text
                   = mail_to "info@maximilianodeyork.com", "INFO@MAXIMILIANODEYORK.COM"

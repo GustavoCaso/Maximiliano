@@ -23,25 +23,24 @@ body, html
     min-height: 100%
     height: auto !important
     height: 100%
-    padding: 0 0 60px
+    padding: 0 0 80px
     margin: 0 auto -60px
     overflow: hidden
     .color_header
       background: $header_color
-      padding: 10px 0
+      padding: 20px 0
 
     #logo
-
+      padding-top: 10px
       .no-border
         &:hover
           border: none
     #logo_2
       margin-top: 15px
+      padding-bottom: 10px
 
-    .main_menu
-
+    .main_menu, .small-menu
       .dropdown-menu
-
         li
           float: left
           margin-right: 40px
@@ -54,7 +53,6 @@ body, html
 
         .dropdown-submenu > .dropdown-menu
           top: 30px
-
           li
             a
               font-size: 14px
@@ -66,35 +64,46 @@ body, html
           border-bottom: 2px solid $font_color
         .coleccion
           left: 41px
-
-
         .urbano
           left: 210px
-
         .accesorios
           left: 343px
+    .small-menu
+      li
+        margin-right: 20px !important
+        a
+          font-size: 18px !important
+      .dropdown-submenu > .dropdown-menu
+        top: 30px !important
+        li
+          a
+            font-size: 14px !important
+      .coleccion
+        left: 15px !important
+      .urbano
+        left: -36px !important
+      .accesorios
+        left: 88px !important
 
 
-        // .dropdown-submenu:hover > .dropdown-menu
-        //   display: block
+    .notice, .alert
+      width: 400px
+      border: 2px solid rgba(189,245,222,1)
+      border-radius: 6px
+      margin: 0 auto
+      padding: 0 95px
+      font-size: 20px
+      margin-top: 10px
+      height: 50px
+      color: white
+      line-height: 50px
+      background: rgba(76,174,76,.5)
 
+    .alert
+      background: rgba(210,50,45,1)
+      border: 2px solid rgba(212,63,58,1)
+      padding: 0 79px
 
-
-      .small-menu-button
-        position: relative
-        left: 673px
-        bottom: 33px
-
-
-      .small-menu
-        ul
-
-          // padding-right: 3.857em // 54px/14px
-          li
-            display: block
-            list-style-type: none
-            text-align: center
-            font-size: 1.429em  //14px/20px
 
     .footer
       color: $font_color !important

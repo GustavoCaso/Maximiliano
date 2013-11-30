@@ -1,4 +1,5 @@
 .container
+  = render "shared/flash"
   .show_container
     .row
       .col-lg-4.col-md-4
@@ -26,11 +27,11 @@
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
                       %p= size.price_after_discount
                     - else
-                      %p{style: "visibility: hidden; "} bkb
+                      %p{style: "visibility: hidden; "}
                       %p= number_to_currency(size.price, unit: "€", format: "%n%u")
                     = form_tag(line_items_path, method: :create) do
                       = hidden_field_tag "size_id", size.id
-                      = submit_tag "Añadir a cesta"
+                      = submit_tag "Añadir a cesta", class: "myButton"
 
 
     %hr
@@ -38,7 +39,9 @@
     .row
       %ul.related_pictures
         - @related_product.each do |product|
-          %li
-            = link_to image_tag(product.picture.url(:thumb), class: "small_img"), product_path(product)
+          - product.sizes.each do |size|
+            - if size.stock?
+              %li
+                = link_to image_tag(product.picture.url(:thumb), class: "small_img"), product_path(product)
 
 

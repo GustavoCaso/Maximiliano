@@ -9,7 +9,7 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(size.id)
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.size.product, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.size.product, notice: 'Se añadido al Carrito' }
 
       else
         format.html { redirect_to @line_item.size.product, alert: "Problema" }

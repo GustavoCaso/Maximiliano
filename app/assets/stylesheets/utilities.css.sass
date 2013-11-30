@@ -8,9 +8,42 @@ a
   color: $font_color
 
   &:hover
-    text-decoration: none
-    border-bottom: 2px solid $font_color
+    text-decoration: underline
     color: darken($font-color, 30%)
+.myButton
+  -moz-box-shadow: 0px 1px 0px 0px #bdbdbd
+  -webkit-box-shadow: 0px 1px 0px 0px #bdbdbd
+  box-shadow: 0px 1px 0px 0px #bdbdbd
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #faf9f5), color-stop(1, #e3dcc7))
+  background: -moz-linear-gradient(top, #faf9f5 5%, #e3dcc7 100%)
+  background: -webkit-linear-gradient(top, #faf9f5 5%, #e3dcc7 100%)
+  background: -o-linear-gradient(top, #faf9f5 5%, #e3dcc7 100%)
+  background: -ms-linear-gradient(top, #faf9f5 5%, #e3dcc7 100%)
+  background: linear-gradient(to bottom, #faf9f5 5%, #e3dcc7 100%)
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faf9f5', endColorstr='#e3dcc7',GradientType=0)
+  background-color: #faf9f5
+  border-radius: 15px
+  border: 1px solid #a69285
+  display: inline-block
+  cursor: pointer
+  color: #000000
+  font-size: 15px
+  font-weight: bold
+  padding: 14px 23px
+  text-decoration: none
+  text-shadow: 0px 1px 0px #ebebeb
+  &:hover
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #e3dcc7), color-stop(1, #faf9f5))
+    background: -moz-linear-gradient(top, #e3dcc7 5%, #faf9f5 100%)
+    background: -webkit-linear-gradient(top, #e3dcc7 5%, #faf9f5 100%)
+    background: -o-linear-gradient(top, #e3dcc7 5%, #faf9f5 100%)
+    background: -ms-linear-gradient(top, #e3dcc7 5%, #faf9f5 100%)
+    background: linear-gradient(to bottom, #e3dcc7 5%, #faf9f5 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e3dcc7', endColorstr='#faf9f5',GradientType=0)
+    background-color: #e3dcc7
+  &:active
+    position: relative
+    top: 1px
 
 /*TYPOGRAPHY*/
 

@@ -1,28 +1,29 @@
 .container
-  .col-lg-12
-    %table.table_cart
-      %thead
-        %tr
-          %th
-          %th DETALLE
-          %th TALLA
-          %th UNIDADES
-          %th PRECIO
-      %tbody
+  .row
+    .col-lg-12
+      #cart_container
         - @cart.line_items.each do |line_item|
-          %tr
-            %td= image_tag (line_item.size.product.picture.url(:thumb)), class: "table_img"
-            %td= line_item.size.product.name
-            %td= image_tag ("#{line_item.size.size.downcase}_size_cart.png"), class: "img-responsive"
-            %td= line_item.quantity
-            %td= number_to_currency(line_item.total_price, unit: "€", format: "%n%u")
-            %td= button_to "Delete" ,line_item, method: :delete, data: {confirm:"Are you sure ?"}
-        %tr.total_line
-          %td{colspan: 4} Total
-          %td= @cart.total_price
+          %ul.table_cart_list.clearfix
+            %li= image_tag (line_item.size.product.picture.url(:thumb)), class: "table_img"
+            %li= line_item.size.product.name
+            %li= image_tag ("#{line_item.size.size.downcase}_size_cart.png"), class: "img-responsive product_size"
+            %li= line_item.quantity
+            %li= number_to_currency(line_item.total_price, unit: "€", format: "%n%u")
+            %li= link_to "" ,line_item, method: :delete, data: {confirm:"Are you sure ?"}, class:"delete_item"
 
-    = button_to "Vaciar Carrito", @cart, method: :delete, data:{confirm: "Are you sure ?"}
-    = button_to "Checkout", new_order_path, method: :get
+
+
+        %p.total_price
+          %span.total
+            Total:
+          = number_to_currency(@cart.total_price, unit: "€", format: "%n%u")
+  .row
+    .col-lg-4.col-lg-push-8.col-md-4.col-md-push-8.col-sm-2.col-sm-push-10.col-xs-2.col-xs-push-10
+      = button_to "Checkout", new_order_path, method: :get, class: "myButton checkout_button"
+  .row
+    .col-lg-12.col-lg-push-2
+      = button_to "Vaciar Carrito", @cart, method: :delete, data:{confirm: "Are you sure ?"}, class: "myButton empty_cart"
+
 
 
 

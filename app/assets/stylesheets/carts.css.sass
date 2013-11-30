@@ -3,19 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "utilities"
 
-.table_cart
-  margin-top: 30px
-  width: 800px
-  tr:first-child, tr:last-child
+#cart_container
+  margin-top: 20px
+  .table_cart_list
+    list-style-type: none
+    width: 800px
+    margin: 0 auto
+    padding-bottom: 10px
+    border-bottom: 1px solid grey
+    margin-bottom: 6px
+    li
+      float: left
+      margin-right: 70px
+      height: 100px
+      line-height: 100px
 
-  tr
+    .product_size
+      margin-top: 10px
 
-    th
-      font-size: 12px
-      text-align: center
-    td
-      vertical-align: middle
-      text-align: center
     .table_img
       border: 2px solid $font_color
       border-radius: 10px
+
+    .delete_item
+      background: url('bin.png') no-repeat center center
+      background-size: 30px
+      width: 30px
+      height: 30px
+      display: block
+      margin-top: 30px
+
+  .total_price
+    margin-top: 20px
+    margin-left: 665px
+    .total
+      font-size: 16px
+      font-weight: bold
+

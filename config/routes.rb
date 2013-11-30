@@ -12,7 +12,7 @@ Maximiliano::Application.routes.draw do
 
 
   get "cart", to: "carts#show"
-  delete "carts", to: "carts#destroy"
+  delete "cart", to: "carts#destroy"
 
   devise_for :users
   resources :products, only:[:show]
