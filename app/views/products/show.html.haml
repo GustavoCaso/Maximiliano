@@ -38,9 +38,8 @@
     .row
       %ul.related_pictures
         - @related_product.each do |product|
-          - product.sizes.each do |size|
-            - if size.stock?
-              %li
-                = link_to image_tag(product.picture.url(:thumb), class: "small_img"), product_path(product)
+          - if product.stock?
+            %li
+              = link_to image_tag(product.picture.url(:thumb), class: "small_img img-responsive"), product_path(product)
 
 

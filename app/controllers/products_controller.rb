@@ -5,25 +5,28 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def collection
-    @collection = Product.with_category( "coleccion").not_outlet
+    @outlet = Product.find_all_by_outlet(true)
+    @collection = Product.find_all_by_category( "coleccion") - @outlet
   end
 
   def urban
-    @collection = Product.with_category( "urbano").not_outlet
+    @outlet = Product.find_all_by_outlet(true)
+    @collection = Product.find_all_by_category("urbano") - @outlet
   end
 
   def accesories
-    @collection = Product.with_category( "accesorios").not_outlet
+    @outlet = Product.find_all_by_outlet(true)
+    @collection = Product.find_all_by_category("accesorios") - @outlet
   end
 
   def outlet
-    @collection = Product.outlet
+    @collection = Product.find_all_by_outlet(true)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @related_product = Product.with_category(@product.category) - [@product]
+    @related_product = Product.find_all_by_category(@product.category) - [@product]
   end
 
 

@@ -31,7 +31,7 @@ class Admin::ProductsController < AdminController
 
     @product.sizes.each do |size|
       size.destroy! if size.price.nil?
-      size.position = ["XS", "S", "M", "G", "XG"].index(size.size)
+      size.position = ApplicationController::SIZES.index(size.size) unless size.destroyed?
     end
 
 
@@ -78,6 +78,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture, :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture, :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position])
     end
 end

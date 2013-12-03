@@ -6,9 +6,7 @@ class Product < ActiveRecord::Base
 
   has_attached_file :picture, :styles => {:large => "300x300!", :medium => "250x250!", :thumb => "100x100!" }, :default_url => "no_photo.png"
 
-  scope :with_category, lambda{|category| where category: category }
-  scope :outlet, where(outlet: true)
-  scope :not_outlet, where(outlet: false)
+
 
 
   CATEGORIES = {coleccion:["CHANNEL","PIEL","TRAJES","ABRIGOS"], urbano:["PUNTO CLASICO","PUNTO DECO", "BÁSICOS", "IMPERMEABLES"], accesorios:["MANTAS", "COJINES", "COLLARES", "CORREAS"]}
@@ -24,9 +22,9 @@ class Product < ActiveRecord::Base
 
   def self.search(search)
     if search
-      find(:all, conditions: ['category LIKE ?', "%#{search}%"])
+      all.where(category: search)
     else
-      find(:all)
+      all
     end
   end
 
