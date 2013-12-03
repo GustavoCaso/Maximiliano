@@ -27,8 +27,7 @@
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
                       %p= size.price_after_discount
                     - else
-                      %p{style: "visibility: hidden; "}
-                      %p= number_to_currency(size.price, unit: "€", format: "%n%u")
+                      %p.margin_p_show_product= number_to_currency(size.price, unit: "€", format: "%n%u")
                     = form_tag(line_items_path, method: :create) do
                       = hidden_field_tag "size_id", size.id
                       = submit_tag "Añadir a cesta", class: "myButton"

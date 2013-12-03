@@ -12,9 +12,15 @@
           .col-lg-2.col-md-2.col-sm-2.col-xs-2
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
-          .col-md-10.col-sm-6.col-xs-7.col-lg-10
+          .col-md-10.col-sm-6.col-xs-7.col-lg-10.hidden-xs.hidden-sm
             #logo_2
             = image_tag ("maximiliano_2.png")
+          .col-sm-6.visible-sm
+            #logo_2
+            = image_tag ("maximiliano_xs.png")
+          .col-xs-7.visible-xs
+            #logo_2
+            = image_tag ("maximiliano_xxs.png")
 
 
           .row
@@ -60,48 +66,20 @@
                 - if Cart.find_by_id(session[:cart_id])
                   %li= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
 
-
-            .col-sm-10.col-xs-10.col-sm-push-2.col-xs-push-2.visible-sm.visible-xs.small-menu
+          .row
+            .visible-sm.visible-xs.small-menu
               %ul.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
-                %li.dropdown-submenu
+                %li.dropdown-submenu.col-xs-12
                   %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
-                  %ul.dropdown-menu.coleccion.quicksand{class: ("visible" if @switch == "collection")}
-                    %li
-                      %a{href: "#", class: "channel"} CHANNEL
-                    %li
-                      %a{href: "#", class: "piel"} PIEL
-                    %li
-                      %a{href: "#", class: "trajes"} TRAJES
-                    %li
-                      %a{href: "#", class: "abrigos"} ABRIGOS
-                %li.dropdown-submenu
+                %li.dropdown-submenu.col-xs-12
                   %a{href: urban_path, class:("underline" if @switch== "urban")  } URBANO
-                  %ul.dropdown-menu.urbano.quicksand{class: ("visible" if @switch == "urban")}
-                    %li
-                      %a{href: "#", class: "punto_clasico"} PUNTO CLASICO
-                    %li
-                      %a{href: "#", class: "punto_deco"} PUNTO DECO
-                    %li
-                      %a{href: "#", class: "basico"} BÁSICOS
-                    %li
-                      %a{href: "#", class: "impermeables"} IMPERMEABLES
-                %li.dropdown-submenu
+                %li.dropdown-submenu.col-xs-12
                   %a{href: accesories_path, class:("underline" if @switch== "accesories")  } ACCESORIOS
-                  %ul.dropdown-menu.accesorios.quicksand{class: ("visible" if @switch == "accesories")}
-                    %li
-                      %a{href: "#", class: "mantas"} MANTAS
-                    %li
-                      %a{href: "#", class: "cojines"} COJINES
-                    %li
-                      %a{href: "#", class: "collares"} COLLARES
-                    %li
-                      %a{href: "#", class: "correas"} CORREAS
                 - if outlet?
-                  %li= link_to "OUTLET", outlet_path, class:("underline" if @switch== "outlet")
-                %li= link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
-
+                  %li.col-xs-12= link_to "OUTLET", outlet_path, class:("underline" if @switch== "outlet")
+                %li.col-xs-12= link_to "SASTRE", tailor_path, class:("underline" if @switch== "tailor")
                 - if Cart.find_by_id(session[:cart_id])
-                  %li= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
+                  %li.col-xs-12= link_to "CARRITO", cart_path(), class:("underline" if @switch== "shop")
 
       = yield
 

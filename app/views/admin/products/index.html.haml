@@ -1,5 +1,10 @@
 %h1 Listing products
 
+#search_form
+  = form_tag admin_products_path, method: "get" do
+    = text_field_tag :search, params[:search]
+    = submit_tag "Categoria", name: nil, class: "myButton"
+
 %table
   %tr
     %th Name

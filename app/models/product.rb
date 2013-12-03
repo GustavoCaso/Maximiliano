@@ -22,5 +22,13 @@ class Product < ActiveRecord::Base
      not sizes.sum {|size| size.stock.to_i}.zero?
   end
 
+  def self.search(search)
+    if search
+      find(:all, conditions: ['category LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
 
 end
