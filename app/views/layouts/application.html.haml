@@ -12,15 +12,16 @@
           .col-lg-2.col-md-2.col-sm-2.col-xs-2
             #logo
               = link_to (image_tag "logo.png", alt: "MaximilianoDeYork", class: "img-responsive"), root_path, class: "no-border"
-          .col-md-10.col-sm-6.col-xs-7.col-lg-10.hidden-xs.hidden-sm
-            #logo_2
-            = image_tag ("maximiliano_2.png")
-          .col-sm-6.visible-sm
-            #logo_2
-            = image_tag ("maximiliano_xs.png")
-          .col-xs-7.visible-xs
-            #logo_2
-            = image_tag ("maximiliano_xxs.png")
+          .col-md-10.col-sm-6.col-xs-7.col-lg-10#logo_2
+            Maximiliano de York
+
+            -#= image_tag ("maximiliano_2.png")
+          -# .col-sm-6.visible-sm
+          -#   #logo_2
+          -#   = image_tag ("maximiliano_xs.png")
+          -# .col-xs-7.visible-xs
+          -#   #logo_2
+          -#   = image_tag ("maximiliano_xxs.png")
 
 
           .row
