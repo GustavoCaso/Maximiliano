@@ -65,7 +65,9 @@
 
           .row
             .visible-sm.visible-xs.small-menu
-              %ul.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
+              %button{type: 'button', class: "btn btn-default"}
+                %p.small-menu-button.glyphicon.glyphicon-th-list
+              %ul.small-menu.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
                 %li.dropdown-submenu.col-xs-12
                   %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
                 %li.dropdown-submenu.col-xs-12

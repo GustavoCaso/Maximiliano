@@ -5,28 +5,25 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def collection
-    @outlet = Product.find_all_by_outlet(true)
-    @collection = Product.find_all_by_category( "coleccion") - @outlet
+    @collection = Product.all.where(category: "coleccion", outlet: false).includes(:sizes)
   end
 
   def urban
-    @outlet = Product.find_all_by_outlet(true)
-    @collection = Product.find_all_by_category("urbano") - @outlet
+    @collection = Product.all.where(category: "urbano", outlet: false).includes(:sizes)
   end
 
   def accesories
-    @outlet = Product.find_all_by_outlet(true)
-    @collection = Product.find_all_by_category("accesorios") - @outlet
+    @collection = Product.all.where(category: "accesorios", outlet: false).includes(:sizes)
   end
 
   def outlet
-    @collection = Product.find_all_by_outlet(true)
+    @collection = Product.all.where(outlet: true)
   end
 
   # GET /products/1
   # GET /products/1.json
   def show
-    @related_product = Product.find_all_by_category(@product.category) - [@product]
+    @related_product = Product.all.where(category: @product.category) - [@product]
   end
 
 
