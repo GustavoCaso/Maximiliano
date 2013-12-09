@@ -1,0 +1,117 @@
+@import "utilities"
+@import url(http://fonts.googleapis.com/css?family=Marck+Script)
+@import url(http://fonts.googleapis.com/css?family=Mr+Bedfort)
+
+
+body, html
+  height: 100%
+  -webkit-transition: all 2s ease-in-out
+  -moz-transition: all 2s ease-in-out
+  -o-transition: all 2s ease-in-out
+  transition: all 2s ease-in-out
+  #container
+    min-height: 100%
+    height: auto !important
+    height: 100%
+    padding: 0 0 80px
+    margin: 0 auto -60px
+    overflow: hidden
+    .color_header
+      background: $header_color
+      padding: 20px 0
+
+    #logo
+      padding-top: 10px
+      .no-border
+        &:hover
+          border: none
+
+    .main_menu, .small-menu
+      .dropdown-menu
+        li
+          float: left
+          margin-right: 40px
+          a
+            color: $font_color
+            font-size: 20px
+
+            &:hover
+              background: none
+
+        .dropdown-submenu > .dropdown-menu
+          top: 30px
+          li
+            a
+              font-size: 14px
+        .underline
+          border-bottom: 2px solid $font_color
+        .visible
+          display: block
+        .active
+          border-bottom: 2px solid $font_color
+        .coleccion
+          left: 41px
+        .urbano
+          left: 210px
+        .accesorios
+          left: 343px
+    .small-menu-button
+      font-size: 22px
+      margin-bottom: 0
+    .small-menu
+      text-align: center
+      li
+        margin-right: 20px !important
+        a
+          display: inline !important
+          font-size: 24px
+      .dropdown-submenu > .dropdown-menu
+        top: 30px !important
+        li
+          a
+            font-size: 14px !important
+      .coleccion
+        left: 15px !important
+      .urbano
+        left: -36px !important
+      .accesorios
+        left: 88px !important
+
+
+    .notice, .alert
+      width: 400px
+      border: 2px solid rgba(189,245,222,1)
+      border-radius: 6px
+      margin: 0 auto
+      padding: 0 95px
+      font-size: 20px
+      margin-top: 10px
+      height: 50px
+      color: white
+      line-height: 50px
+      background: rgba(76,174,76,.5)
+
+    .alert
+      background: rgba(210,50,45,1)
+      border: 2px solid rgba(212,63,58,1)
+      padding: 0 79px
+
+
+    .footer
+      color: $font_color !important
+      background: $header_color !important
+      nav.footer_nav
+        ul
+          list-style-type: none
+          li
+            float: left
+            margin-right: 8px
+          li:after
+            content: "|"
+            margin-left: 5px
+          li:last-child:after
+            content: ""
+            margin-left: 5px
+      span
+        a
+          color: $font_color

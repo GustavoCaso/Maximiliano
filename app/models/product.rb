@@ -4,7 +4,7 @@ class Product < ActiveRecord::Base
 
   accepts_nested_attributes_for :sizes, allow_destroy: true
 
-  has_attached_file :picture, :styles => {:large => "300x300!", :medium => "250x250!", :thumb => "100x100!" }, :default_url => "no_photo.png"
+  has_attached_file :picture, :styles => {:large => "300x300>", :medium => "250x250>", :thumb => "100x100>" }, :default_url => "no_photo.png"
 
 
 

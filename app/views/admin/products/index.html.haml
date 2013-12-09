@@ -1,4 +1,7 @@
-%h1 Listing products
+%h1
+  Listado de Productos (
+  = @products.count
+  )
 
 #search_form
   = form_tag admin_products_path, method: "get" do
@@ -7,10 +10,10 @@
 
 %table
   %tr
-    %th Name
-    %th Category
-    %th Sub Category
-    %th Picture
+    %th Nombre
+    %th Categoria
+    %th Sub-Categoria
+    %th Foto
     %th XS
     %th S
     %th M
@@ -56,11 +59,11 @@
           %br
           == (x #{s.stock.to_i})
       %td
-        = link_to 'Show', admin_product_path(product)
+        = link_to 'Ver', admin_product_path(product)
         |
-        = link_to 'Edit', edit_admin_product_path(product)
+        = link_to 'Editar', edit_admin_product_path(product)
         |
-        = link_to 'Destroy', [:admin, @product], :method => :delete, :data => { :confirm => 'Are you sure?' }
+        = link_to 'Borrar', [:admin, product], :method => :delete, :data => { :confirm => '¿ Estas seguro de querer borrarlo ?' }
 
 %br
 
