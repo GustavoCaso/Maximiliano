@@ -4,7 +4,8 @@ class Admin::ProductsController < AdminController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.search(params[:search])
+    # search is a methos in the model
+    @products = Product.search(params[:search]).page(params[:page]).per_page(4)
   end
 
   # GET /products/1

@@ -6,7 +6,7 @@
   = link_to 'Back', admin_products_path
 .show_product
   %p
-    %b Name:
+    %b Nombre:
     = @product.name
   %p
     %b Description:
@@ -19,7 +19,7 @@
     = @product.sub_category
 
   %table.table_show_product
-    %caption PRICES
+    %caption Precios
     %tr
       - @product.sizes.each do |size|
         - if size.price

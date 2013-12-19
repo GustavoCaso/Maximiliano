@@ -7,7 +7,7 @@
   = form_tag admin_products_path, method: "get" do
     = text_field_tag :search, params[:search]
     = submit_tag "Categoria", name: nil, class: "myButton"
-
+= will_paginate(@products)
 %table
   %tr
     %th Nombre
@@ -67,4 +67,6 @@
 
 %br
 
-= link_to 'New Product', new_admin_product_path
+
+
+= link_to 'Nuevo Producto', new_admin_product_path

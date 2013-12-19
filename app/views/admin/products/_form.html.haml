@@ -1,7 +1,12 @@
 = form_for [:admin, @product] do |f|
   - if @product.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+      %h2
+        - if @product.errors.count == 1
+          = t "errors.templeate.header.one", model: @product.class
+        -else
+          = t "errors.template.header.other", model: Product.model_name.human, count: @product.errors.count
+
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg

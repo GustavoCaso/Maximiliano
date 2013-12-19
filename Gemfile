@@ -17,6 +17,9 @@ gem "paperclip", "~> 3.5.2"
 # login system
 gem "devise"
 
+#pagination
+gem "will_paginate"
+
 #paypal integration
 gem "paypal-express"
 
