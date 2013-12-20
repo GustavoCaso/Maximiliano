@@ -35,13 +35,14 @@
         .field
           = ff.hidden_field :size
           %h2= ff.object.size
-        .field
+          %p.final_price 0
+        .field.price_field
           = ff.label :price, "Precio"
           = ff.text_field :price
         .field
           = ff.label :stock
           = ff.text_field :stock
-        .field
+        .field.discount_field
           = ff.label :discount, "Descuento(%)"
           = ff.text_field :discount
 

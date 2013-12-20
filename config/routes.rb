@@ -32,6 +32,9 @@ Maximiliano::Application.routes.draw do
   get '/admin', to: "admin#index", as: :user_root
 
   namespace :admin do
+
+    post "products/update_price", to: "products#update_price", as: "update_price"
+
     resources :products
     resources :users
   end
