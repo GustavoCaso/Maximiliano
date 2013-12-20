@@ -74,8 +74,8 @@ class Admin::ProductsController < AdminController
   def update_price
     @index = params[:index]
 
-    @price = params[:price].to_i
-    @discount = params[:discount].to_i
+    @price = params[:price].to_f
+    @discount = params[:discount].to_f
 
     @final_discount = (@price - ((@price/100) * @discount))
 

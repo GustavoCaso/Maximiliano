@@ -1,3 +1,3 @@
-var index = <%= @index %>;
+var index = <%=@index %>;
 var size_to_update = "product_sizes_attributes_"+index+"_size";
-$("#"+size_to_update).next().next().html('<%= @final_discount %>');
+$("#"+size_to_update).next().next().html('<%= @final_discount %> €');
