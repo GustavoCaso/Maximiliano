@@ -3,7 +3,9 @@ class Order < ActiveRecord::Base
 
   validates_presence_of :name, :email, :address, :city, :postcode
 
+
   after_create :set_number
+
 
   def check_stock(cart)
     cart.line_items.select { |item| not item.size.stock? }

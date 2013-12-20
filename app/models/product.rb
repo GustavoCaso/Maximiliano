@@ -1,13 +1,11 @@
 class Product < ActiveRecord::Base
   has_many :sizes, -> { order "position" }
 
-
   accepts_nested_attributes_for :sizes, allow_destroy: true
 
-  has_attached_file :picture, :styles => {:large => "300x300!", :medium => "250x250!", :thumb => "100x100!" }, :default_url => "no_photo.png"
+  has_attached_file :picture, :styles => {:large => "300x300>", :medium => "250x250>", :thumb => "100x100>" }, :default_url => "no_photo.png"
 
-
-
+  validates_presence_of :name, :description, :category, :sub_category
 
   CATEGORIES = {coleccion:["CHANNEL","PIEL","TRAJES","ABRIGOS"], urbano:["PUNTO CLASICO","PUNTO DECO", "BÁSICOS", "IMPERMEABLES"], accesorios:["MANTAS", "COJINES", "COLLARES", "CORREAS"]}
 

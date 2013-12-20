@@ -61,6 +61,13 @@ class OrdersController < ApplicationController
     @order = Order.find_by_token(params[:token])
     @order.line_items
     @order.update_stock
+
+    # SEND EMAIL
+    @order.line_items.each do |line_item|
+    if line_item.size == 0
+      line_item.size.destroy!
+      NoStock.without_stock(@order.line_item.product).deliver
+    end
     session[:cart_id] = nil
   end
 

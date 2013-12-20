@@ -1,32 +1,34 @@
 = form_for [:admin, @product] do |f|
   - if @product.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
+      %h2
+        - if @product.errors.count == 1
+          = t "errors.templeate.header.one", model: @product.class
+        -else
+          = t "errors.template.header.other", model: Product.model_name.human, count: @product.errors.count
+
       %ul
         - @product.errors.full_messages.each do |msg|
           %li= msg
   .product_info
     .field
-      = f.label :name
+      = f.label :name, "Nombre"
       = f.text_field :name
     .field
-      = f.label :description
+      = f.label :description, "Descripción"
       = f.text_area :description
     .field
-      = f.label :category
+      = f.label :category, "Categoria"
       = f.select :category, Product::CATEGORIES.keys, prompt: "Select a category"
     .field
-      = f.label :sub_category
+      = f.label :sub_category, "Sub-categoria"
       = f.select :sub_category, Product::CATEGORIES, prompt: "Select sub category"
     .field
       = f.label :outlet
       = f.check_box :outlet
     .field
-      = f.label :picture
+      = f.label :picture, "Foto"
       = f.file_field :picture
-    .actions
-      = f.submit 'Save'
-
   .sizes_field
     = f.fields_for :sizes do |ff|
       .size_price
@@ -34,14 +36,17 @@
           = ff.hidden_field :size
           %h2= ff.object.size
         .field
-          = ff.label :price
+          = ff.label :price, "Precio"
           = ff.text_field :price
         .field
           = ff.label :stock
           = ff.text_field :stock
         .field
-          = ff.label :discount
+          = ff.label :discount, "Descuento(%)"
           = ff.text_field :discount
+
+  .actions
+    = f.submit 'Save', class: "myButton"
 
 
 
