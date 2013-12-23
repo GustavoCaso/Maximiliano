@@ -6,10 +6,10 @@ $(document).ready(function(){
 
   });
 
-/*    $('.small-menu-list').hide();
+    $('.small-menu-list').hide();
 
   $('.small-menu-button').on('click', function(){
     $('.small-menu-list').slideToggle();
   });
-*/
+
 });
