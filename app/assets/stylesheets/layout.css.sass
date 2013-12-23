@@ -89,21 +89,25 @@ body, html
       padding: 0 79px
 
 
-    .footer
-      color: $font_color !important
-      background: $header_color !important
-      nav.footer_nav
-        ul
-          list-style-type: none
-          li
-            float: left
-            margin-right: 8px
-          li:after
-            content: "|"
-            margin-left: 5px
-          li:last-child:after
-            content: ""
-            margin-left: 5px
-      span
-        a
-          color: $font_color
+  #footer_content
+    color: $font_color !important
+    background: $header_color !important
+    nav.footer_nav
+      ul
+        list-style-type: none
+        height: 60px
+        line-height: 60px
+        li
+          float: left
+          margin-right: 8px
+        li:after
+          content: "|"
+          margin-left: 5px
+        li:last-child:after
+          content: ""
+          margin-left: 5px
+    span
+      height: 60px
+      line-height: 60px
+      a
+        color: $font_color
