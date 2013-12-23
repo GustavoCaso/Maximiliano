@@ -1,3 +1,4 @@
+//=require ./tooltip.js
 //=require ./affix.js
 //=require ./button.js
 //=require ./dropdown.js
@@ -9,4 +10,3 @@
 //=require ./tab.js
 //=require ./collapse.js
 //=require ./popover.js
-//=require ./tooltip.js
