@@ -103,22 +103,26 @@ body, html
   #footer_content
     color: $font_color !important
     background: $header_color !important
-    nav.footer_nav
-      ul
-        list-style-type: none
+    .footer_links
+      text-align: center
+      nav.footer_nav
+        ul
+          list-style-type: none
+          height: 60px
+          line-height: 60px
+          li
+            display: inline-block
+            margin-right: 8px
+          li:after
+            content: "|"
+            margin-left: 5px
+          li:last-child:after
+            content: ""
+            margin-left: 5px
+    .mail_link
+      text-align: center
+      span
         height: 60px
         line-height: 60px
-        li
-          float: left
-          margin-right: 8px
-        li:after
-          content: "|"
-          margin-left: 5px
-        li:last-child:after
-          content: ""
-          margin-left: 5px
-    span
-      height: 60px
-      line-height: 60px
-      a
-        color: $font_color
+        a
+          color: $font_color
