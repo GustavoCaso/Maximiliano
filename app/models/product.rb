@@ -3,7 +3,19 @@ class Product < ActiveRecord::Base
 
   accepts_nested_attributes_for :sizes, allow_destroy: true
 
-  has_attached_file :picture, :styles => {:large => "300x300>", :medium => "250x250>", :thumb => "100x100>" }, :default_url => "no_photo.png"
+  has_attached_file :picture,
+                    :styles => {
+                      :large => "300x300>",
+                      :medium => "250x250>",
+                      :thumb => "100x100>"
+                    },
+                    :default_url => "no_photo.png",
+                    :storage => :s3,
+                    :bucket => 'maximiliano',
+                    :s3_credentials => {
+                      :access_key_id => 'AKIAJ4NHUVKQUW446QPA',
+                      :secret_access_key => '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'
+                    }
 
   validates_presence_of :name, :description, :category, :sub_category
 
