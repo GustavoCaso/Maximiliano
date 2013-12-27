@@ -14,7 +14,8 @@ class Product < ActiveRecord::Base
                     :bucket => 'maximiliano',
                     :s3_credentials => {
                       :access_key_id => 'AKIAJ4NHUVKQUW446QPA',
-                      :secret_access_key => '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'
+                      :secret_access_key => 'psNqooPNwS8LbgXNTVlWkh97YWm2P+YlzN9SBon2',
+                      :s3_host_name => 's3-eu-west-1.amazonaws.com'
                     }
 
   validates_presence_of :name, :description, :category, :sub_category
