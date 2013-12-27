@@ -14,6 +14,7 @@ gem 'haml-rails'
 
 # image handlen
 gem "paperclip", "~> 3.5.2"
+gem "aws-sdk"
 # login system
 gem "devise"
 
