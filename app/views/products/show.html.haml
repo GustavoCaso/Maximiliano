@@ -3,7 +3,7 @@
   .show_container
     .row
       .col-lg-4.col-md-4
-        = image_tag @product.picture.url(:large), class: "show_img"
+        = image_tag @product.picture.url(:large), class: "show_img img-responsive"
       .col-lg-8.col-md-8.manual_height
         .info_product
           %h3
@@ -25,7 +25,7 @@
                   %td
                     - if size.discount
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
-                      %p= size.price_after_discount
+                      %p= number_to_currency(size.price_after_discount, unit: "€", format: "%n%u")
                     - else
                       %p.margin_p_show_product= number_to_currency(size.price, unit: "€", format: "%n%u")
                     = form_tag(line_items_path, method: :create) do
