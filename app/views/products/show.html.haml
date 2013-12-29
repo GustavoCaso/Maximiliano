@@ -23,7 +23,7 @@
               - @product.sizes.each do |size|
                 - if size.stock?
                   %td
-                    - if size.discount
+                    - if size.discount > 0
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
                       %p= number_to_currency(size.price_after_discount, unit: "€", format: "%n%u")
                     - else
