@@ -8,7 +8,7 @@
         .info_product
           %h3
             = @product.name
-          %h3 Caracteristicas
+          %h5 Caracteristicas
           %p= @product.description
 
 
@@ -30,7 +30,7 @@
                       %p.margin_p_show_product= number_to_currency(size.price, unit: "€", format: "%n%u")
                     = form_tag(line_items_path, method: :create) do
                       = hidden_field_tag "size_id", size.id
-                      = submit_tag "Añadir a cesta", class: "myButton"
+                      = submit_tag "lo quiero", class: "myButton"
 
 
     %hr

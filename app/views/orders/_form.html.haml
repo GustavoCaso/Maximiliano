@@ -7,19 +7,19 @@
           %li= msg
 
   .field
-    = f.label :name
+    = f.label :name, "Nombre"
     = f.text_field :name
   .field
-    = f.label :email
+    = f.label :email, "Mail"
     = f.text_field :email
   .field
-    = f.label :address
+    = f.label :address, "Direccion"
     = f.text_area :address
   .field
-    = f.label :city
+    = f.label :city, "Ciudad"
     = f.text_field :city
   .field
-    = f.label :postcode
+    = f.label :postcode , "CP"
     = f.text_field :postcode
   .actions
     = f.submit 'Save'
