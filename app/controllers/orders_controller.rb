@@ -31,9 +31,9 @@ class OrdersController < ApplicationController
       Paypal.sandbox! if Rails.env.development?
 
       request = Paypal::Express::Request.new(
-        :username   => "paloma-facilitator_api1.maximilianodeyork.com",
-        :password   => "1385743679",
-        :signature  => "Api-EGlR9MBGCCR71bss7X.AKzIqAgFY5IUqzAGvzJX.vULuQfpzMYAN",
+        :username   => ENV['PAYPAL_USERNAME'],
+        :password   => ENV['PAYPAL_PASSWORD'],
+        :signature  => ENV['PAYPAL_SIGNATURE'],
         :custom_fields => {:order_id => @order.id}
       )
 

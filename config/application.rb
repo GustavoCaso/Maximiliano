@@ -26,11 +26,13 @@ module Maximiliano
      config.i18n.default_locale = :es
      
      
-     # for loading s3 ENV vars
+     # for loading ENV vars
      config.before_configuration do
-       env_file = File.join(Rails.root, 'config', 's3.yml')
-       YAML.load(File.open(env_file)).each do |key, value|
-         ENV[key.to_s] = value
+       env_file = File.join(Rails.root, 'config', 'env_variables.yml')
+       YAML.load(File.open(env_file)).each do |env, values|
+         
+         values.each { |key, value| ENV[key.to_s] = value } if Rails.env.eql? env.to_s 
+       
        end if File.exists?(env_file)
      end
      
