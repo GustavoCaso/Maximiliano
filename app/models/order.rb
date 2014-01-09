@@ -35,8 +35,7 @@ class Order < ActiveRecord::Base
         :name => item.size.product.name,
         :description => item.size.size,
         :amount => item.size.price,
-        :quantity => item.quantity,
-        :category => :Digital
+        :quantity => item.quantity
       }
     end
   end

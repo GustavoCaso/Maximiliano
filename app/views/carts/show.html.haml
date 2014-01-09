@@ -19,7 +19,7 @@
           = number_to_currency(@cart.total_price, unit: "€", format: "%n%u")
   .row
     .col-lg-4.col-lg-push-8.col-md-4.col-md-push-8.col-sm-2.col-sm-push-10.col-xs-2.col-xs-push-9
-      = button_to "Checkout", new_order_path, method: :get, class: "myButton checkout_button"
+      = button_to "Realizar pedido", new_order_path, method: :get, class: "myButton checkout_button"
   .row
     .col-lg-12.col-lg-push-2
       = button_to "Vaciar Carrito", @cart, method: :delete, data:{confirm: "Are you sure ?"}, class: "myButton", form_class: "empty_cart"
