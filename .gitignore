@@ -15,5 +15,5 @@
 /log/*.log
 /tmp
 
-.DS_Store
-config/app_envarioments_variables.rb
+**/*/.DS_Store
+config/s3.yml
