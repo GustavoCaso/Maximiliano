@@ -7,6 +7,7 @@
     = csrf_meta_tags
     %meta{content: "width=device-width", name: "viewport"}
   %body
+    #mask
     #container
       .row.color_header
         .container
@@ -22,7 +23,7 @@
             .col-lg-12.col-md-12.col-lg-push-2.col-md-push-2.hidden-sm.hidden-xs.main_menu
               %ul.dropdown-menu.clearfix{"aria-labelledby" => "dropdownMenu", role: "menu", style: "display: block; position: static;"}
                 %li.dropdown-submenu
-                  %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCION
+                  %a{href: collection_path, class:("underline" if @switch== "collection") } COLECCIÓN
                   %ul.dropdown-menu.coleccion.quicksand{class: ("visible" if @switch == "collection")}
                     %li
                       %a{href: "#", class: "channel"} CHANEL

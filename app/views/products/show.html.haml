@@ -9,7 +9,11 @@
           %h3
             = @product.name
           %h4 Caracteristicas
-          %p= @product.description
+          %p= simple_format @product.description
+          %p#sizes_sample= link_to "Detalles de las medidas",  "#"
+          #boxes
+            #dialog.window
+              = image_tag "detalles_medidas.png"
 
 
           %table.price_list
