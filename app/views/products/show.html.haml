@@ -23,7 +23,7 @@
               - @product.sizes.each do |size|
                 - if size.stock?
                   %td
-                    - if size.discount > 0
+                    - if size.nil? && size.discount > 0
                       %p.old_price= number_to_currency(size.price, unit: "€", format: "%n%u")
                       %p= number_to_currency(size.price_after_discount, unit: "€", format: "%n%u")
                     - else
@@ -33,13 +33,6 @@
                       = submit_tag "lo quiero", class: "myButton"
 
 
-    %hr
 
-    .row
-      %ul.related_pictures
-        - @related_product.each do |product|
-          - if product.stock?
-            %li
-              = link_to image_tag(product.picture.url(:thumb), class: "small_img img-responsive"), product_path(product)
 
 
