@@ -17,17 +17,21 @@ class Admin::ProductsController < AdminController
   def new
     @product = Product.new
     ApplicationController::SIZES.each {|s| @product.sizes.new size: s}
+    2.times{ @product.photos.build}
   end
 
   # GET /products/1/edit
   def edit
     ApplicationController::SIZES.each {|s| @product.sizes.new(size: s )unless @product.sizes_exits_for(s) }
+    2.times{ @product.photos.build} if @product.photos.empty?
   end
 
   # POST /products
   # POST /products.json
   def create
+
     @product = Product.new(product_params)
+    logger.debug @product.valid?
 
 
     @product.sizes.each do |size|
@@ -50,6 +54,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    raise "hell"
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
@@ -93,6 +98,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture, :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture])
     end
 end

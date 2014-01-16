@@ -1,4 +1,4 @@
-= form_for [:admin, @product] do |f|
+= form_for [:admin, @product], html: {multipart: true} do |f|
   - if @product.errors.any?
     #error_explanation
       %h2
@@ -26,9 +26,16 @@
     .field
       = f.label :outlet
       = f.check_box :outlet
-    .field
-      = f.label :picture, "Foto"
-      = f.file_field :picture
+    .photo_field
+      = f.fields_for :photos do |p|
+        - if p.object.new_record?
+          .field
+            = p.label :picture , "Foto"
+            = p.file_field :picture
+        - unless p.object.new_record?
+          = image_tag p.object.picture.url(:thumb), style: "display: block; margin-bottom: 10px;"
+
+
   .sizes_field
     = f.fields_for :sizes do |ff|
       .size_price
