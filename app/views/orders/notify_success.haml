@@ -1,25 +1,15 @@
-%h1 
-  Su compra se ha realizado con éxito.
-  Gracias
-  = @order.name 
-  por comprar en Maximiliano de York
+#success_order
+  .container
+    .row
+      .col-lg-4
+        = image_tag "new_dog_2.png"
+      .col-lg-8.success_text
+        %h1 Muchas gracias
+        %p su pedido se ha realizado correctamente
+        %p recibirá un email de confirmacion
 
-%h2 Detales de su pedido
 
-- @order.line_items.each do |line_item|
-  %ul.info
-    %li= line_item.size.product.name
-    %li= line_item.size.size
-    %li= line_item.size.price
-    
-%p Se enviara a la siguiente direccion:
-%span
-  = @order.address
-  ,
-  = @order.city
-  ,
-  = @order.postcode    
-    
-    
 
-    
+
+
+

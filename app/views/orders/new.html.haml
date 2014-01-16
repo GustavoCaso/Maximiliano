@@ -1,9 +1,11 @@
 #new_order
   .container
-    %h1 Nuevo Pedido
+    .row
+      .col-lg-7.order_form
+        %h1 Información de contacto
+        = render 'form'
+      .col-lg-5
+        = image_tag "new_dog_2.png"
 
-    = render 'form'
 
 
-    = @order.total
-    = link_to 'Back', orders_path
