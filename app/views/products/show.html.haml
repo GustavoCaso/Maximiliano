@@ -10,7 +10,7 @@
             = @product.name
           %h4 Caracteristicas
           %p= simple_format @product.description
-          %p#sizes_sample= link_to "Detalles de las medidas",  "#"
+          %p#sizes_sample= link_to "Detalles de las medidas",  "#", {style: "font-style: italic; "}
           #boxes
             #dialog.window
               = image_tag "detalles_medidas.png"
