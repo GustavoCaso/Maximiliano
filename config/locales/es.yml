@@ -207,6 +207,11 @@ es:
       size:
         size: "talla"
         discount: "descuento"
+      order:
+        name: "Nombre"
+        address: "Direccion"
+        city: "Cuidad"
+        postcode: "Codigo Postal"
     errors:
       <<: *errors
 

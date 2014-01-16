@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
   validates_presence_of :name, :email, :address, :city, :postcode
-
+  validates_format_of :email, with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
 
   after_create :set_number
 
