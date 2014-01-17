@@ -34,8 +34,8 @@
           %td
             Stock
             = size.stock
-.show_image
-  - @product.photos.each do |photo|
-    = image_tag photo.picture.url(:medium)
-
-
+- @product.photos.each do |photo|
+  .show_image
+    = image_tag photo.picture.url(:medium), class: "img-rounded"
+    = radio_button 'photo', "", photo.id
+%p{style: "color: rgba(210,82,47,1);"} (*) La imagen que eligas aqui sera la que aparezca en la seción pública

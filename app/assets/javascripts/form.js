@@ -11,5 +11,11 @@ $(document).ready(function(){
 
   }
 
+  // Delete photo functionality
+  $('.delete_photo').on('click', function(){
+    $(this).next().val(true);
+    $(this).parent().hide();
+  });
+
 
 });

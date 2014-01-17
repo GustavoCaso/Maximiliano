@@ -26,14 +26,18 @@
     .field
       = f.label :outlet
       = f.check_box :outlet
-    .photo_field
+
       = f.fields_for :photos do |p|
         - if p.object.new_record?
           .field
             = p.label :picture , "Foto"
             = p.file_field :picture
         - unless p.object.new_record?
-          = image_tag p.object.picture.url(:thumb), style: "display: block; margin-bottom: 10px;"
+          .photo_field.clearfix
+            = image_tag p.object.picture.url(:thumb)
+            = link_to "Borrar", "#", class: "delete_photo"
+            = p.hidden_field :_destroy
+
 
 
   .sizes_field

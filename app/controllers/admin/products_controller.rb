@@ -23,7 +23,7 @@ class Admin::ProductsController < AdminController
   # GET /products/1/edit
   def edit
     ApplicationController::SIZES.each {|s| @product.sizes.new(size: s )unless @product.sizes_exits_for(s) }
-    2.times{ @product.photos.build} if @product.photos.empty?
+
   end
 
   # POST /products
@@ -98,6 +98,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture, :_destroy])
     end
 end

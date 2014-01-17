@@ -5,8 +5,6 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :sizes, allow_destroy: true
   accepts_nested_attributes_for :photos, allow_destroy: true
 
-
-
   validates_presence_of :name, :description, :category, :sub_category
 
   CATEGORIES = {coleccion:["CHANNEL","PIEL","TRAJES","ABRIGOS"], urbano:["PUNTO CLASICO","PUNTO DECO", "BÁSICOS", "IMPERMEABLES"], accesorios:["MANTAS", "COJINES", "COLLARES", "CORREAS"]}
