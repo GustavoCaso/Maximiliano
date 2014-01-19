@@ -23,7 +23,9 @@ class Admin::ProductsController < AdminController
   # GET /products/1/edit
   def edit
     ApplicationController::SIZES.each {|s| @product.sizes.new(size: s )unless @product.sizes_exits_for(s) }
-
+    photos_count = @product.photos.count
+    photos_count = 2 if photos_count == 0
+    photos_count.times{@product.photos.build} if photos_count < 2
   end
 
   # POST /products
@@ -31,9 +33,6 @@ class Admin::ProductsController < AdminController
   def create
 
     @product = Product.new(product_params)
-    logger.debug @product.valid?
-
-
     @product.sizes.each do |size|
       size.destroy! if size.price.nil?
       size.position = ApplicationController::SIZES.index(size.size) unless size.destroyed?
@@ -54,7 +53,7 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    raise "hell"
+    @photo = @product.photos()
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
@@ -76,18 +75,29 @@ class Admin::ProductsController < AdminController
     end
   end
 
+  def delete_assests
+    params[:delete].each do |id|
+      Photo.find(id).destroy
+      redirect_to admin_products_url
+    end
+  end
+
+  def default_photo
+    photo_id, product_id = params[:photo_id].split(" ")
+    @product = Product.find(product_id)
+    @product.photos.map do |photo|
+      photo.update_attribute(:primary, false)
+    end
+    photo = Photo.find(photo_id)
+    photo.update_attribute(:primary, true )
+    redirect_to [:admin, @product]
+  end
+
   def update_price
     @index = params[:index]
-
     @price = params[:price].to_f
     @discount = params[:discount].to_f
-
     @final_discount = (@price - ((@price/100) * @discount))
-
-
-
-
-
   end
 
   private
@@ -98,6 +108,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture, :_destroy])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture])
     end
 end

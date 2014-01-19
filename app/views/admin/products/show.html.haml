@@ -36,6 +36,13 @@
             = size.stock
 - @product.photos.each do |photo|
   .show_image
-    = image_tag photo.picture.url(:medium), class: "img-rounded"
-    = radio_button 'photo', "", photo.id
+    = image_tag photo.picture.url(:thumb), class: "img-rounded"
+    = radio_button 'photo', "", [photo.id,@product.id], id: "selected_photo"
+  .form_to_delete
+    = form_tag delete_assests_admin_products_path do
+      = check_box_tag 'delete[]', photo.id
+      = submit_tag "Borrar"
+
+
+
 %p{style: "color: rgba(210,82,47,1);"} (*) La imagen que eligas aqui sera la que aparezca en la seción pública

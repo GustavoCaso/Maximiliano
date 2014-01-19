@@ -11,11 +11,12 @@ $(document).ready(function(){
 
   }
 
-  // Delete photo functionality
-  $('.delete_photo').on('click', function(){
-    $(this).next().val(true);
-    $(this).parent().hide();
-  });
+  //Selected display Photo
+  var input = $(':radio');
+  input.on('click', function(){
+     id = $(this).val();
+     $.ajax({url: window.location.origin + "/admin/products/default_photo?photo_id=" + id , type: 'post'});
+   });
 
 
 });

@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :product
+  attr_accessor :delete
   has_attached_file :picture,
                     :styles => {
                       :large => "300x300>",
@@ -14,4 +15,7 @@ class Photo < ActiveRecord::Base
                       :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
                       :s3_host_name => 's3-eu-west-1.amazonaws.com'
                     }
+
+
+
 end

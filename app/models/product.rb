@@ -3,7 +3,8 @@ class Product < ActiveRecord::Base
   has_many :photos
 
   accepts_nested_attributes_for :sizes, allow_destroy: true
-  accepts_nested_attributes_for :photos, allow_destroy: true
+  accepts_nested_attributes_for :photos, allow_destroy: true, reject_if: proc {|attributes| attributes['picture'].blank?}
+
 
   validates_presence_of :name, :description, :category, :sub_category
 
@@ -16,6 +17,14 @@ class Product < ActiveRecord::Base
 
   def stock?
      not sizes.sum {|size| size.stock.to_i}.zero?
+  end
+
+  def not_default_photo
+    photos.where(primary: false)
+  end
+
+  def default_photo
+    photos.where(primary: true)
   end
 
   def self.search(search)

@@ -35,7 +35,12 @@ Maximiliano::Application.routes.draw do
 
     post "products/update_price", to: "products#update_price", as: "update_price"
 
-    resources :products
+    resources :products do
+      collection do
+        post :delete_assests
+        post :default_photo
+      end
+    end
     resources :users
   end
 

@@ -3,7 +3,7 @@
   .show_container
     .row
       .col-lg-4.col-md-4
-        = image_tag @product.picture.url(:large), class: "show_img img-responsive"
+        = image_tag @product.default_photo.first.picture.url(:large), class: "show_img img-responsive"
       .col-lg-8.col-md-8.manual_height
         .info_product
           %h3

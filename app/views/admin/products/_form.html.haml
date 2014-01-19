@@ -35,8 +35,7 @@
         - unless p.object.new_record?
           .photo_field.clearfix
             = image_tag p.object.picture.url(:thumb)
-            = link_to "Borrar", "#", class: "delete_photo"
-            = p.hidden_field :_destroy
+
 
 
 
