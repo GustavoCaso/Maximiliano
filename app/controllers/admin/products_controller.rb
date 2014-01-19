@@ -25,7 +25,7 @@ class Admin::ProductsController < AdminController
     ApplicationController::SIZES.each {|s| @product.sizes.new(size: s )unless @product.sizes_exits_for(s) }
     photos_count = @product.photos.count
     photos_count = 2 if photos_count == 0
-    photos_count.times{@product.photos.build} if photos_count < 2
+    photos_count.times{@product.photos.build} if photos_count <= 2
   end
 
   # POST /products
