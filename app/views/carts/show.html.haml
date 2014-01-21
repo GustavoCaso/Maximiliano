@@ -4,7 +4,8 @@
       #cart_container
         - @cart.line_items.each do |line_item|
           %ul.table_cart_list.clearfix
-            %li= image_tag (line_item.size.product.picture.url(:thumb)), class: "table_img"
+            - photo = line_item.size.product.default_photo
+            %li= image_tag (photo.first.picture.url(:thumb)), class: "table_img"
             %li= line_item.size.product.name
             %li= image_tag ("#{line_item.size.size.downcase}_size_cart.png"), class: "img-responsive product_size"
             %li= line_item.quantity
@@ -12,6 +13,9 @@
             %li= link_to "" ,line_item, method: :delete, data: {confirm:"Are you sure ?"}, class:"delete_item"
 
 
+        %p.shipping_price
+          * Gastos de envio
+          = number_to_currency(Order::SHIPPING_PRICE, unit: "€", format: "%n%u")
 
         %p.total_price
           %span.total

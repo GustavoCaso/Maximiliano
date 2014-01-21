@@ -6,6 +6,8 @@ class Order < ActiveRecord::Base
 
   after_create :set_number
 
+  SHIPPING_PRICE = 7
+
 
   def check_stock(cart)
     cart.line_items.select { |item| not item.size.stock? }
@@ -26,7 +28,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    line_items.to_a.sum{|line_item| line_item.size.price * line_item.quantity.to_f }
+    line_items.to_a.sum{|line_item| line_item.size.price * line_item.quantity.to_f } + SHIPPING_PRICE
   end
 
   def payment_params

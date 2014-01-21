@@ -3,7 +3,7 @@ class Cart < ActiveRecord::Base
 
 
   def total_price
-    line_items.sum{|line_item| line_item.total_price}
+    line_items.sum{|line_item| line_item.total_price} + Order::SHIPPING_PRICE
   end
 
   def add_product(size_id)

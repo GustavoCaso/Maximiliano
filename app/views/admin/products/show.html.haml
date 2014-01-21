@@ -34,14 +34,15 @@
           %td
             Stock
             = size.stock
-- @product.photos.each do |photo|
-  .show_image
-    = image_tag photo.picture.url(:thumb), class: "img-rounded"
-    = radio_button 'photo', "", [photo.id,@product.id], id: "selected_photo"
-  .form_to_delete
-    = form_tag delete_assests_admin_products_path do
-      = check_box_tag 'delete[]', photo.id
-      = submit_tag "Borrar"
+
+= form_for [:admin, @product] do |f|
+  = f.fields_for :photos do |ff|
+    .show_image
+      = image_tag ff.object.picture.url(:thumb), class: "img-rounded"
+      = radio_button 'photo', "", ff.object.id, id: "selected_photo"
+    .form_to_delete
+      = ff.check_box :_destroy
+  = f.submit "Borrar", class: "myButton"
 
 
 

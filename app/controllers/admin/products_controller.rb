@@ -53,7 +53,6 @@ class Admin::ProductsController < AdminController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    @photo = @product.photos()
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully updated.' }
@@ -75,21 +74,15 @@ class Admin::ProductsController < AdminController
     end
   end
 
-  def delete_assests
-    params[:delete].each do |id|
-      Photo.find(id).destroy
-      redirect_to admin_products_url
-    end
-  end
-
   def default_photo
-    photo_id, product_id = params[:photo_id].split(" ")
-    @product = Product.find(product_id)
+    @photo = Photo.find params[:photo_id]
+    @product = @photo.product
+
     @product.photos.map do |photo|
       photo.update_attribute(:primary, false)
     end
-    photo = Photo.find(photo_id)
-    photo.update_attribute(:primary, true )
+
+    @photo.update_attribute(:primary, true )
     redirect_to [:admin, @product]
   end
 
@@ -108,6 +101,6 @@ class Admin::ProductsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:picture])
+      params.require(:product).permit(:name, :description, :category, :sub_category, :picture,  :outlet, sizes_attributes:[:size, :price, :id, :stock, :discount, :position], photos_attributes:[:id, :picture, :_destroy])
     end
 end

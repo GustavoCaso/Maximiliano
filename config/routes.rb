@@ -37,7 +37,6 @@ Maximiliano::Application.routes.draw do
 
     resources :products do
       collection do
-        post :delete_assests
         post :default_photo
       end
     end

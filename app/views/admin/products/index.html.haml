@@ -29,7 +29,8 @@
       %td= product.sub_category
       %td
         - photo = product.not_default_photo
-        = image_tag photo.first.picture.url(:thumb)
+        - unless photo.empty?
+          = image_tag photo.first.picture.url(:thumb)
       %td
         - s = product.sizes.find_by_size("XS")
         - if s
