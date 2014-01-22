@@ -23,9 +23,19 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
+
+      shipping = {
+      :name => "Envio",
+      :description => "Gastos de envio",
+      :amount => Order::SHIPPING_PRICE,
+      :quantity => 1
+      }
+
       @order.add_line_items_from_cart(@cart)
 
       items = @order.payment_params
+
+      items =  items << shipping
 
 
       Paypal.sandbox! if Rails.env.development?
@@ -45,8 +55,7 @@ class OrdersController < ApplicationController
 
       response = request.setup(payment_request,
         notify_success_orders_url,
-        notify_cancel_orders_url,
-        :no_shipping => true
+        notify_cancel_orders_url
       )
 
       @order.update_attribute :token, response.token
