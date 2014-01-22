@@ -2,6 +2,9 @@
   .container.container_gallery
     .row.gallery_row
       %ul.ourHolder
+      - if @collection.empty?
+        %p{style: "text-align: center"} NO HAY NINGUN ARTICULO EN ESTOS MOMENTOS, ACTUALIZAREMOS LO ANTES POSIBLE, SENTIMOS LAS MOLESTIAS
+      - else
         - @collection.in_groups_of(3, false) do |collections|
           - collections.each do |product|
             - if product.stock?
