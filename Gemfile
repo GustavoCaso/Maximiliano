@@ -22,7 +22,7 @@ gem "devise"
 gem "will_paginate"
 
 #paypal integration
-gem "paypal-express"
+gem 'paypal-sdk-merchant'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
