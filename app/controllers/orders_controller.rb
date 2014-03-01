@@ -40,56 +40,21 @@ class OrdersController < ApplicationController
       render "new"
     end
 
-    #   shipping = {
-    #   :name => "Envio",
-    #   :description => "Gastos de envio",
-    #   :amount => Order::SHIPPING_PRICE,
-    #   :quantity => 1
-    #   }
-
-    #
-
-    #   items = @order.payment_params
-
-    #   items =  items << shipping
-
-
-    #   Paypal.sandbox! if Rails.env.development?
-
-    #   request = Paypal::Express::Request.new(
-    #     :username   => ENV['PAYPAL_USERNAME'],
-    #     :password   => ENV['PAYPAL_PASSWORD'],
-    #     :signature  => ENV['PAYPAL_SIGNATURE'],
-    #     :custom_fields => {:order_id => @order.id}
-    #   )
-
-    #   payment_request = Paypal::Payment::Request.new(
-    #     :currency_code => :EUR,
-    #     :amount => @order.total,
-    #     :items => items
-    #   )
-
-    #   response = request.setup(payment_request,
-    #     notify_success_orders_url,
-    #     notify_cancel_orders_url
-    #   )
-
-    #   @order.update_attribute :token, response.token
-
-    #   redirect_to response.redirect_uri
-    # else
-    #   render :new
-    # end
   end
 
   def notify_success
-    @order = Order.find_by_token(params[:token])
-    @order.line_items
-    @order.update_stock
+    @order = Order.where(token: params[:token]).first
+    @order.update_attribute(:payer_id, params[:PayerID])
+    @paypal = PaypalInterface.new(@order)
+    @paypal.do_express_checkout
     session[:cart_id] = nil
   end
 
   def notify_cancel
+  end
+
+  def notify
+
   end
 
   private
