@@ -12,6 +12,7 @@ class PaypalInterface
   def initialize(order)
     @api = PayPal::SDK::Merchant::API.new
     @order = order
+    @line_items = @order.line_items
   end
 
   def express_checkout
@@ -31,21 +32,21 @@ class PaypalInterface
           },
           ShippingTotal: {
             currencyID: "EUR",
-            value: "0"
+            value: "7"
           },
-          TaxTotal: {
-            currencyID: "EUR",
-            value: "0"
-          },
-          PaymentDetailsItem: [{
-            Name: "Prueba",
-            Quantity: 1,
-            Amount: {
-              currencyID: "EUR",
-              value: @order.total
-            },
-            ItemCategory: "Physical"
-          }],
+          PaymentDetailsItem: [
+            @line_items.map do |item|
+              {
+                Name: item.size.product.name,
+                Quantity: item.quantity,
+                Amount: {
+                  currencyID: "EUR",
+                  value: item.size.price
+                },
+                ItemCategory: "Physical"
+              }
+            end
+          ],
           PaymentAction: "Sale"
         }]
       }
