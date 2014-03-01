@@ -5,6 +5,7 @@ Maximiliano::Application.routes.draw do
     collection do
       get "notify_success"
       get "notify_cancel"
+      get "notify"
     end
   end
   resources :line_items

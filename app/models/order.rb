@@ -31,6 +31,10 @@ class Order < ActiveRecord::Base
     line_items.to_a.sum{|line_item| line_item.size.price * line_item.quantity.to_f} + SHIPPING_PRICE
   end
 
+  def set_payment_token token
+    update_attribute(:token,token)
+  end
+
   def payment_params
 
     items = line_items.map do |item|

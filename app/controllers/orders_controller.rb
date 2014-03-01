@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  rescue_from Paypal::Exception::APIError, with: :paypal_api_error
+  # rescue_from Paypal::Exception::APIError, with: :paypal_api_error
 
   include CurrentCart
   before_action :set_cart, only:[:create, :new]
@@ -23,47 +23,59 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
-
-      shipping = {
-      :name => "Envio",
-      :description => "Gastos de envio",
-      :amount => Order::SHIPPING_PRICE,
-      :quantity => 1
-      }
-
       @order.add_line_items_from_cart(@cart)
-
-      items = @order.payment_params
-
-      items =  items << shipping
-
-
-      Paypal.sandbox! if Rails.env.development?
-
-      request = Paypal::Express::Request.new(
-        :username   => ENV['PAYPAL_USERNAME'],
-        :password   => ENV['PAYPAL_PASSWORD'],
-        :signature  => ENV['PAYPAL_SIGNATURE'],
-        :custom_fields => {:order_id => @order.id}
-      )
-
-      payment_request = Paypal::Payment::Request.new(
-        :currency_code => :EUR,
-        :amount => @order.total,
-        :items => items
-      )
-
-      response = request.setup(payment_request,
-        notify_success_orders_url,
-        notify_cancel_orders_url
-      )
-
-      @order.update_attribute :token, response.token
-
-      redirect_to response.redirect_uri
+      @paypal = PaypalInterface.new(@order)
+      @paypal.express_checkout
+      if @paypal.express_checkout_response.success?
+        @paypal_url = @paypal.api.express_checkout_url(@paypal.express_checkout_response)
+        redirect_to @paypal_url
+      else
+        render "new"
+      end
     else
-      render :new
+      render "new"
     end
+
+    #   shipping = {
+    #   :name => "Envio",
+    #   :description => "Gastos de envio",
+    #   :amount => Order::SHIPPING_PRICE,
+    #   :quantity => 1
+    #   }
+
+    #
+
+    #   items = @order.payment_params
+
+    #   items =  items << shipping
+
+
+    #   Paypal.sandbox! if Rails.env.development?
+
+    #   request = Paypal::Express::Request.new(
+    #     :username   => ENV['PAYPAL_USERNAME'],
+    #     :password   => ENV['PAYPAL_PASSWORD'],
+    #     :signature  => ENV['PAYPAL_SIGNATURE'],
+    #     :custom_fields => {:order_id => @order.id}
+    #   )
+
+    #   payment_request = Paypal::Payment::Request.new(
+    #     :currency_code => :EUR,
+    #     :amount => @order.total,
+    #     :items => items
+    #   )
+
+    #   response = request.setup(payment_request,
+    #     notify_success_orders_url,
+    #     notify_cancel_orders_url
+    #   )
+
+    #   @order.update_attribute :token, response.token
+
+    #   redirect_to response.redirect_uri
+    # else
+    #   render :new
+    # end
   end
 
   def notify_success
@@ -87,7 +99,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:name, :email, :address, :postcode, :city)
     end
 
-    def paypal_api_error(e)
-      redirect_to root_url, alert: e.response.details.collect(&:long_message).join('<br />')
-    end
+    # def paypal_api_error(e)
+    #   redirect_to root_url, alert: e.response.details.collect(&:long_message).join('<br />')
+    # end
 end
