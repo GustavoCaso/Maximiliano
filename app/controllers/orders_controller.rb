@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
+
       @order.add_line_items_from_cart(@cart)
       @paypal = PaypalInterface.new(@order)
       @paypal.express_checkout
@@ -30,9 +31,12 @@ class OrdersController < ApplicationController
         @paypal_url = @paypal.api.express_checkout_url(@paypal.express_checkout_response)
         redirect_to @paypal_url
       else
+        flash[:notice] = "Problem with @paypal"
         render "new"
+
       end
     else
+      flash[:notice] = "The order has not been save"
       render "new"
     end
 
