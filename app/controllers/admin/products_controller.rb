@@ -38,7 +38,6 @@ class Admin::ProductsController < AdminController
       size.position = ApplicationController::SIZES.index(size.size) unless size.destroyed?
     end
 
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to [:admin, @product], notice: 'Product was successfully created.' }
@@ -48,6 +47,10 @@ class Admin::ProductsController < AdminController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def preview
+    @product = Product.new(product_params)
   end
 
   # PATCH/PUT /products/1
