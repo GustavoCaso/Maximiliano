@@ -1,5 +1,5 @@
 module ApplicationHelper
   def outlet?
-    Product.all.map{|product| product.outlet?}.any?
+    Product.exists?(outlet: true)
   end
 end
