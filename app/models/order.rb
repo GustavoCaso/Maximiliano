@@ -35,17 +35,6 @@ class Order < ActiveRecord::Base
     update_attribute(:token,token)
   end
 
-  def payment_params
-
-    items = line_items.map do |item|
-      {
-        :name => item.size.product.name,
-        :description => item.size.size,
-        :amount => item.size.price,
-        :quantity => item.quantity
-      }
-    end
-  end
 
   private
     def set_number
