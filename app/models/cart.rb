@@ -7,12 +7,10 @@ class Cart < ActiveRecord::Base
   end
 
   def add_product(size_id)
-    current_item = line_items.find_by(size_id: size_id)
+    current_item = line_items.find_or_initialize_by(size_id: size_id)
 
-    if current_item
+    if !current_item.new_record?
       current_item.quantity +=1
-    else
-      current_item = line_items.build(size_id: size_id)
     end
 
     current_item
