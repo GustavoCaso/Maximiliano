@@ -24,6 +24,10 @@ gem "will_paginate"
 #paypal integration
 gem 'paypal-sdk-merchant'
 
+#env_variables
+gem 'dotenv'
+gem 'pry'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

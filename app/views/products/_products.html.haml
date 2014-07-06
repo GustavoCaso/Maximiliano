@@ -2,13 +2,13 @@
   .container.container_gallery
     .row.gallery_row
       %ul.ourHolder
-      - if @collection.empty?
-        %p{style: "text-align: center"} NO HAY NINGUN ARTICULO EN ESTOS MOMENTOS, ACTUALIZAREMOS LO ANTES POSIBLE, SENTIMOS LAS MOLESTIAS
-      - else
-        - @collection.in_groups_of(3, false) do |collections|
-          - collections.each do |product|
-            - if product.stock?
-              %li{class: "item col-xs-6 col-lg-4 col-md-4", :data => {id: product.id, type: product.sub_category.downcase.split.join("_")}}
-                - photo = product.default_photo
-                - unless photo.empty?
-                  = link_to (image_tag photo.first.picture.url(:medium), class:'img-responsive gallery_img'), product_path(product)
+        - if @collection.empty?
+          %p{style: "text-align: center"} NO HAY NINGUN ARTICULO EN ESTOS MOMENTOS, ACTUALIZAREMOS LO ANTES POSIBLE, SENTIMOS LAS MOLESTIAS
+        - else
+          - @collection.in_groups_of(3, false) do |collections|
+            - collections.each do |product|
+              - if product.stock?
+                %li{class: "item col-xs-6 col-lg-4 col-md-4", :data => {id: product.id, type: product.sub_category.downcase.split.join("_")}}
+                  - photo = product.default_photo
+                  - unless photo.empty?
+                    = link_to (image_tag photo.first.picture.url(:medium), class:'img-responsive gallery_img'), product_path(product)
